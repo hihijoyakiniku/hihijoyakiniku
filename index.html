@@ -42,7 +42,7 @@
     padding:22px 5vw;
     background:linear-gradient(to bottom, rgba(20,17,13,0.85), transparent);
   }
-  .topnav .mark{font-family:var(--brush); font-size:28px; color:var(--gold-bright); letter-spacing:2px;}
+  .topnav .mark{font-family:var(--brush); font-size:36.4px; color:var(--gold-bright); letter-spacing:2px;}
   .topnav ul{list-style:none; display:none; gap:38px; font-size:14px; letter-spacing:2px; color:var(--ink-muted);}
   .topnav ul li a:hover{color:var(--gold-bright);}
   @media(min-width:820px){ .topnav ul{display:flex;} }
@@ -180,14 +180,21 @@
   .carousel-dots span.active{ background:var(--gold-bright); transform:scale(1.2); }
 
   /* ---------- reservation CTA (always follows the viewport) ---------- */
-  .float-cta{
+  .float-cta-stack{
     position:fixed; bottom:28px; right:28px; z-index:60;
+    display:flex; flex-direction:column; align-items:flex-end; gap:12px;
+  }
+  .float-cta{
     display:flex; align-items:center; gap:10px; padding:16px 26px; border-radius:40px;
     background:#0F0D0A; border:1px solid var(--gold); color:var(--gold-bright);
     font-size:14px; letter-spacing:2px; cursor:pointer;
     transition:background .3s ease, transform .3s ease;
   }
   .float-cta:hover{ transform:translateY(-2px); }
+  .float-cta.secondary{
+    border-color:var(--ember-bright); color:var(--ember-bright);
+    font-size:13px; padding:13px 24px; background:#1C1712;
+  }
   .float-cta .ember-dot{
     width:8px; height:8px; border-radius:50%; background:var(--ember-bright);
     animation:ember-pulse 1.8s ease-in-out infinite;
@@ -301,16 +308,15 @@
   .topnav .linkable .link-badge, .foot-grid .linkable .link-badge{
     top:50%; left:auto; right:-32px; transform:translateY(-50%);
   }
-  /* 浮動訂位按鈕本身必須維持 fixed，避免被 .linkable 的 position:relative 覆蓋而跑版 */
-  .float-cta.linkable{ position:fixed; }
-  .float-cta.linkable .link-badge{ top:-12px; left:-12px; }
+  /* 浮動按鈕群組現在由 .float-cta-stack 統一控制固定定位 */
+  .float-cta-stack .link-badge{ top:-12px; left:-12px; }
 </style>
 </head>
 <body>
 
   <!-- ============ TOP NAV ============ -->
   <nav class="topnav">
-    <div class="mark logo-slot img-upload linkable has-logo" data-label="點擊上傳LOGO" data-href="日日敘-首頁設計稿-可編輯版.html">
+    <div class="mark logo-slot img-upload linkable has-logo" data-label="點擊上傳LOGO" data-href="index.html">
       <span class="editable-text logo-text">日日敘</span>
       <img class="logo-img" alt="日日敘 Logo" src="images/logo-1-1b65f82d4d.png">
     </div>
@@ -440,7 +446,7 @@
         <h4 class="editable-text">營業資訊</h4>
         <ul>
           <li class="editable-text">臺中市南屯區惠中里大墩路468號</li>
-          <li class="editable-text">17:30 – 23:30</li>
+          <li class="editable-text">17:00 – 23:30</li>
           <li class="editable-text">電話｜04-2320-4918</li>
           <li class="editable-text">Instagram ｜ @hihijoyakiniku</li>
         </ul>
@@ -453,33 +459,16 @@
   </footer>
 
   <!-- ============ RESERVATION CTA (follows scroll) ============ -->
-  <div class="float-cta linkable" id="floatCta" data-href="https://inline.app/booking/-OjTQnAHCIUJU4sv2AMv:inline-live-4/-OjTQnFu_SWAl6bgrVYp">
-    <span class="ember-dot"></span><span class="editable-text">立即訂位</span>
+  <div class="float-cta-stack">
+    <div class="float-cta secondary linkable" id="floatPromo" data-href="https://lin.ee/8g3Yqqx">
+      <span class="ember-dot"></span><span class="editable-text">專屬優惠</span>
+    </div>
+    <div class="float-cta linkable" id="floatCta" data-href="https://inline.app/booking/-OjTQnAHCIUJU4sv2AMv:inline-live-4/-OjTQnFu_SWAl6bgrVYp">
+      <span class="ember-dot"></span><span class="editable-text">立即訂位</span>
+    </div>
   </div>
 
-  <!-- ============ EDITOR PANEL ============ -->
-  <div class="editor-panel" id="editorPanel">
-    <div class="editor-controls" id="editorControls">
-      <label class="editor-row">
-        <span>編輯模式</span>
-        <input type="checkbox" id="editModeSwitch">
-      </label>
-      <div class="editor-row">
-        <span>文字顏色</span>
-        <input type="color" id="colorPicker" value="#F3ECDD">
-      </div>
-      <div class="preset-colors">
-        <span style="background:#F3ECDD" data-color="#F3ECDD"></span>
-        <span style="background:#E8C77E" data-color="#E8C77E"></span>
-        <span style="background:#C9A24B" data-color="#C9A24B"></span>
-        <span style="background:#E07A45" data-color="#E07A45"></span>
-        <span style="background:#A0937A" data-color="#A0937A"></span>
-      </div>
-      <div class="editor-hint">開啟編輯後：點文字可直接修改內容；點圖片區塊可上傳照片；選取文字後用顏色點修改顏色；點區塊上的 🔗 圖示可加入或修改連結網址。完成後按「匯出目前版本」下載你編輯好的檔案。</div>
-      <button class="editor-export" id="exportBtn">匯出目前版本</button>
-    </div>
-    <button class="editor-toggle" id="editorToggleBtn" title="編輯此頁">✎</button>
-  </div>
+  <!-- 編輯面板已移除（正式發布版本） -->
 
 <script>
   // reveal on scroll
