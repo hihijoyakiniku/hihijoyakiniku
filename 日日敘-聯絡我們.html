@@ -219,9 +219,10 @@
 
   .editor-panel{
     position:fixed; bottom:28px; left:28px; z-index:80;
-    display:flex; flex-direction:column; align-items:flex-start; gap:0;
+    display:none; flex-direction:column; align-items:flex-start; gap:0;
     font-family:var(--sans-cjk);
   }
+  .editor-panel.show{ display:flex; }
   .editor-toggle{
     width:48px; height:48px; border-radius:50%; border:1px solid var(--gold);
     background:#0F0D0A; color:var(--gold-bright); font-size:18px; cursor:pointer;
@@ -359,6 +360,11 @@
 
 <script>
   // ===== editor panel open/close =====
+  // 網址加上 #edit 才會顯示編輯面板，一般訪客瀏覽不會看到
+  if(window.location.hash === '#edit'){
+    const ep = document.getElementById('editorPanel');
+    if(ep) ep.classList.add('show');
+  }
   const editorToggleBtn = document.getElementById('editorToggleBtn');
   const editorControls = document.getElementById('editorControls');
   if(editorToggleBtn && editorControls){
