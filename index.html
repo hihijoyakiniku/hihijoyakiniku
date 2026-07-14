@@ -232,6 +232,18 @@
   .quote p{ font-size:15px; color:var(--ink); font-family:var(--serif-cjk); line-height:1.9; }
   .quote .who{ margin-top:16px; font-size:12px; letter-spacing:2px; color:var(--ink-muted); }
 
+  /* ---------- FAQ ---------- */
+  .faq{ max-width:820px; margin:0 auto; }
+  .faq-item{ border-bottom:1px solid var(--line); padding:22px 4px; }
+  .faq-item:first-child{ border-top:1px solid var(--line); }
+  .faq-item .q{
+    font-family:var(--serif-cjk); font-weight:600; font-size:17px; color:var(--ink);
+    margin-bottom:10px; line-height:1.7;
+  }
+  .faq-item .q::before{ content:'Q'; color:var(--gold-bright); margin-right:8px; font-family:var(--serif-en); font-style:italic; }
+  .faq-item .a{ font-size:15px; color:var(--ink-muted); line-height:1.9; }
+  .faq-item .a::before{ content:'A'; color:var(--gold); margin-right:8px; font-family:var(--serif-en); font-style:italic; }
+
   /* ---------- footer ---------- */
   footer{ padding:1.5cm 6vw 1cm; border-top:1px solid var(--line); background:#0F0D0A; }
   .foot-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:48px; margin-bottom:60px; }
@@ -321,9 +333,9 @@
       <img class="logo-img" alt="日日敘 Logo" src="images/logo-1-1b65f82d4d.png">
     </div>
     <ul>
-      <li><a href="日日敘-關於我們.html" class="editable-text linkable">關於我們</a></li>
-      <li><a href="日日敘-菜單.html" class="editable-text linkable">菜單</a></li>
-      <li><a href="日日敘-最新消息-文章頁面範例.html" class="editable-text linkable">最新消息</a></li>
+      <li><a href="日日敘-菜單.html" class="editable-text linkable">菜單參考</a></li>
+      <li><a href="日日敘-關於我們.html" class="editable-text linkable">餐廳資訊</a></li>
+      <li><a href="日日敘-最新消息-文章頁面範例.html" class="editable-text linkable">最新優惠</a></li>
       <li><a href="日日敘-聯絡我們.html" class="editable-text linkable">聯絡我們</a></li>
     </ul>
   </nav>
@@ -398,6 +410,42 @@
     </div>
   </section>
 
+  <!-- ============ 常見問題 ============ -->
+  <section id="faq">
+    <div class="section-bg img-upload" data-label="點擊上傳背景照片"></div>
+    <div class="section-label reveal in"><span class="editable-text">常見問題 · FAQ</span></div>
+    <div class="faq reveal in">
+      <div class="faq-item">
+        <p class="q editable-text">需要訂位嗎？現場候位可以嗎？</p>
+        <p class="a editable-text">建議提前透過 LINE 官方帳號或電話訂位，我們需要預訂以安排座位與食材備量，假日尤其建議提早預約。</p>
+      </div>
+      <div class="faq-item">
+        <p class="q editable-text">菜單是套餐制還是可以單點？</p>
+        <p class="a editable-text">主打 omakase 式炭火燒肉，提供多種價位套餐並可加點單品，招牌是每日限量的巧克力熟成牛舌。</p>
+      </div>
+      <div class="faq-item">
+        <p class="q editable-text">有適合帶小朋友的座位嗎？</p>
+        <p class="a editable-text">提供兒童高腳椅，歡迎攜家帶眷一同用餐。</p>
+      </div>
+      <div class="faq-item">
+        <p class="q editable-text">有包廂可以聚餐或慶生嗎？</p>
+        <p class="a editable-text">備有私人用餐包廂，建議訂位時告知人數與需求，我們會為您安排合適的座位。</p>
+      </div>
+      <div class="faq-item">
+        <p class="q editable-text">附近停車方便嗎？</p>
+        <p class="a editable-text">店外備有收費路邊停車格，鄰近也有收費停車場可供使用。</p>
+      </div>
+      <div class="faq-item">
+        <p class="q editable-text">可以攜帶寵物嗎？</p>
+        <p class="a editable-text">允許攜帶狗狗入內，實際入座區域請依現場安排為準。</p>
+      </div>
+      <div class="faq-item">
+        <p class="q editable-text">怎麼加入會員？有什麼優惠？</p>
+        <p class="a editable-text">透過 LINE 官方帳號即可加入 OCard 會員，消費集點兌換優惠，最新活動請留意「最新優惠」頁面。</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ 顧客評價 ============ -->
   <section id="reviews">
     <div class="section-bg img-upload" data-label="點擊上傳背景照片"></div>
@@ -435,11 +483,11 @@
       <div id="about">
         <h4 class="editable-text">快速連結</h4>
         <ul>
-          <li><a href="日日敘-關於我們.html" class="editable-text linkable">關於我們</a></li>
-          <li><a href="日日敘-菜單.html" class="editable-text linkable">菜單</a></li>
-          <li><a href="日日敘-最新消息-文章頁面範例.html" class="editable-text linkable">最新消息／活動</a></li>
-          <li><a href="日日敘-聯絡我們.html" class="editable-text linkable"></a></li>
-          <li><a href="日日敘-聯絡我們.html" class="editable-text linkable">常見問題</a></li>
+          <li><a href="日日敘-菜單.html" class="editable-text linkable">菜單參考</a></li>
+          <li><a href="日日敘-關於我們.html" class="editable-text linkable">餐廳資訊</a></li>
+          <li><a href="日日敘-最新消息-文章頁面範例.html" class="editable-text linkable">最新優惠</a></li>
+          <li><a href="日日敘-聯絡我們.html" class="editable-text linkable">聯絡我們</a></li>
+          <li><a href="#faq" class="editable-text linkable">常見問題</a></li>
         </ul>
       </div>
       <div>
@@ -468,7 +516,43 @@
     </div>
   </div>
 
-  <!-- 編輯面板已移除（正式發布版本） -->
+  <!-- ============ EDITOR PANEL ============ -->
+  <div class="editor-panel" id="editorPanel">
+    <div class="editor-controls" id="editorControls">
+      <label class="editor-row">
+        <span>編輯模式</span>
+        <input type="checkbox" id="editModeSwitch">
+      </label>
+      <div class="editor-row">
+        <span>文字顏色</span>
+        <input type="color" id="colorPicker" value="#F3ECDD">
+      </div>
+      <div class="preset-colors">
+        <span style="background:#F3ECDD" data-color="#F3ECDD"></span>
+        <span style="background:#E8C77E" data-color="#E8C77E"></span>
+        <span style="background:#C9A24B" data-color="#C9A24B"></span>
+        <span style="background:#E07A45" data-color="#E07A45"></span>
+        <span style="background:#A0937A" data-color="#A0937A"></span>
+      </div>
+      <label class="editor-row">
+        <span>字型</span>
+        <select id="fontPicker" style="max-width:150px;">
+          <option value="">（沿用預設）</option>
+          <option value="'Noto Serif TC', serif">Noto Serif TC（標楷／標題感）</option>
+          <option value="'Noto Sans TC', sans-serif">Noto Sans TC（黑體／內文感）</option>
+          <option value="'Cormorant Garamond', serif">Cormorant Garamond（英文襯線）</option>
+          <option value="'Ma Shan Zheng', cursive">Ma Shan Zheng（毛筆字）</option>
+        </select>
+      </label>
+      <label class="editor-row">
+        <span>字級</span>
+        <input type="number" id="fontSizePicker" min="10" max="72" step="1" style="width:64px;" placeholder="px">
+      </label>
+      <div class="editor-hint">開啟編輯後：點文字可直接修改內容；點圖片區塊可上傳照片；選取文字後用顏色點修改顏色；點一下文字（不用選取）再調整「字型」「字級」，會套用到整段文字；點區塊上的 🔗 圖示可加入或修改連結網址。完成後按「匯出目前版本」下載你編輯好的檔案。</div>
+      <button class="editor-export" id="exportBtn">匯出目前版本</button>
+    </div>
+    <button class="editor-toggle" id="editorToggleBtn" title="編輯此頁">✎</button>
+  </div>
 
 <script>
   // reveal on scroll
@@ -521,6 +605,35 @@
   }
   document.querySelectorAll('.preset-colors span').forEach(sw=>{
     sw.addEventListener('click', ()=> applyColor(sw.dataset.color));
+  });
+
+  // ===== font family & font size =====
+  const fontPicker = document.getElementById('fontPicker');
+  if(fontPicker){
+    fontPicker.addEventListener('change', (e)=>{
+      if(!currentEditable) return;
+      if(e.target.value === ''){ currentEditable.style.fontFamily = ''; }
+      else { currentEditable.style.fontFamily = e.target.value; }
+    });
+  }
+  const fontSizePicker = document.getElementById('fontSizePicker');
+  if(fontSizePicker){
+    fontSizePicker.addEventListener('input', (e)=>{
+      if(!currentEditable) return;
+      const val = e.target.value;
+      if(val === ''){ currentEditable.style.fontSize = ''; }
+      else { currentEditable.style.fontSize = val + 'px'; }
+    });
+  }
+  // 點文字時，把目前的字型／字級顯示回選單，方便再次調整
+  document.querySelectorAll('.editable-text').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      if(fontSizePicker){
+        const size = window.getComputedStyle(el).fontSize;
+        fontSizePicker.value = parseInt(size, 10) || '';
+      }
+      if(fontPicker){ fontPicker.value = ''; }
+    });
   });
 
   // ===== image upload =====
