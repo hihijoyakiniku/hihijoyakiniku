@@ -16,6 +16,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/offer-line-review.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/offer-lobster.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/offer-birthday.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/contact.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

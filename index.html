@@ -252,27 +252,36 @@
   /* ---------- reservation CTA (always follows the viewport) ---------- */
   .float-cta-stack{
     position:fixed; bottom:28px; right:28px; z-index:60;
-    display:flex; flex-direction:column; align-items:flex-end; gap:12px;
+    display:flex; flex-direction:column; align-items:flex-end; gap:14px;
   }
   .float-cta{
-    display:flex; align-items:center; gap:10px; padding:16px 26px; border-radius:40px;
+    position:relative; display:flex; align-items:center; justify-content:center;
+    width:54px; height:54px; border-radius:50%; border:1px solid transparent;
+    cursor:pointer; transition:transform .3s ease, box-shadow .3s ease, filter .3s ease;
+  }
+  .float-cta svg{ width:24px; height:24px; }
+  .float-cta:hover{ transform:translateX(-5px); filter:brightness(1.1); }
+  .float-cta.line{ background:#06C755; color:#FFFFFF; }
+  .float-cta.phone{ background:#3FA75E; color:#FFFFFF; }
+  .float-cta.primary-pulse{ background:var(--gold); color:#1C1712; }
+  .float-cta .tooltip{
+    position:absolute; right:calc(100% + 14px); top:50%;
+    transform:translateY(-50%) translateX(10px);
     background:#0F0D0A; border:1px solid var(--gold); color:var(--gold-bright);
-    font-size:14px; letter-spacing:2px; cursor:pointer;
-    transition:background .3s ease, transform .3s ease;
+    padding:7px 16px; border-radius:6px; font-size:13px; letter-spacing:1px;
+    white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease;
   }
-  .float-cta:hover{ transform:translateY(-2px); }
-  .float-cta.secondary{
-    border-color:var(--ember-bright); color:var(--ember-bright);
-    font-size:13px; padding:13px 24px; background:#1C1712;
+  .float-cta:hover .tooltip{ opacity:1; transform:translateY(-50%) translateX(0); }
+  .float-cta.primary-pulse{ animation:cta-pulse 2.2s ease-in-out infinite; }
+  @keyframes cta-pulse{
+    0%{ box-shadow:0 0 0 0 rgba(201,162,75,0.5); }
+    70%{ box-shadow:0 0 0 12px rgba(201,162,75,0); }
+    100%{ box-shadow:0 0 0 0 rgba(201,162,75,0); }
   }
-  .float-cta .ember-dot{
-    width:8px; height:8px; border-radius:50%; background:var(--ember-bright);
-    animation:ember-pulse 1.8s ease-in-out infinite;
-  }
-  @keyframes ember-pulse{
-    0%{ box-shadow:0 0 0 0 rgba(224,122,69,0.55); }
-    70%{ box-shadow:0 0 0 10px rgba(224,122,69,0); }
-    100%{ box-shadow:0 0 0 0 rgba(224,122,69,0); }
+  @media(max-width:480px){
+    .float-cta{ width:48px; height:48px; }
+    .float-cta svg{ width:21px; height:21px; }
   }
 
   /* ---------- ambience gallery ---------- */
@@ -311,8 +320,21 @@
     margin-bottom:10px; line-height:1.7;
   }
   .faq-item .q::before{ content:'Q'; color:var(--gold-bright); margin-right:8px; font-family:var(--serif-en); font-style:italic; }
-  .faq-item .a{ font-size:15px; color:var(--ink-muted); line-height:1.9; }
-  .faq-item .a::before{ content:'A'; color:var(--gold); margin-right:8px; font-family:var(--serif-en); font-style:italic; }
+  .faq-item .q{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    cursor:pointer; user-select:none;
+  }
+  .faq-item .q .toggle-icon{
+    font-size:20px; color:var(--gold); line-height:1; flex-shrink:0;
+    transition:transform .3s ease; font-family:var(--serif-en);
+  }
+  .faq-item.open .q .toggle-icon{ transform:rotate(45deg); }
+  .faq-item .a-wrap{
+    max-height:0; overflow:hidden; transition:max-height .35s ease;
+  }
+  .faq-item.open .a-wrap{ max-height:600px; }
+  .faq-item .a-wrap .a{ padding-top:14px; font-size:15px; color:var(--ink-muted); line-height:1.9; }
+  .faq-item .a-wrap .a::before{ content:'A'; color:var(--gold); margin-right:8px; font-family:var(--serif-en); font-style:italic; }
 
   /* ---------- footer ---------- */
   footer{ padding:1.5cm 6vw 1cm; border-top:1px solid var(--line); background:#0F0D0A; }
@@ -488,32 +510,46 @@
     <div class="section-label reveal in"><span class="editable-text">常見問題 · FAQ</span></div>
     <div class="faq reveal in">
       <div class="faq-item">
-        <p class="q editable-text">預約方式</p>
-        <p class="a editable-text">可透過inline、ontable進行預訂，線上可接受1-8位訂位，若人數8位以上，請於「營業時間」來電，由專人服務。</p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">預約方式<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <div class="a-wrap">
+          <p class="a editable-text">可透過inline、ontable進行預訂，線上可接受1-8位訂位，若人數8位以上，請於「營業時間」來電，由專人服務。</p>
+        </div>
       </div>
       <div class="faq-item">
-        <p class="q editable-text">用餐時間</p>
-        <p class="a editable-text">預訂成功後，位置將保留10分鐘。用餐時間為2小時，從訂位時間開始計算，後續如無訂位客人可繼續用餐。</p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">用餐時間<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <div class="a-wrap">
+          <p class="a editable-text">預訂成功後，位置將保留10分鐘。用餐時間為2小時，從訂位時間開始計算，後續如無訂位客人可繼續用餐。</p>
+        </div>
       </div>
       <div class="faq-item">
-        <p class="q editable-text">親子&amp;寵物友善嗎</p>
-        <p class="a editable-text">都相當歡迎，若有兒童椅需求，可在預約時備註。</p><div>寵物僅需有專屬的「推車或提籃」，並自備保潔墊就能與寶貝一起享用餐點。</div><p></p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">親子&amp;寵物友善嗎<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <div class="a-wrap">
+          <p class="a editable-text">都相當歡迎，若有兒童椅需求，可在預約時備註。</p><div>寵物僅需有專屬的「推車或提籃」，並自備保潔墊就能與寶貝一起享用餐點。</div><p></p>
+        </div>
       </div>
       <div class="faq-item">
-        <p class="q editable-text">有包廂可以聚餐或慶生嗎</p>
-        <p class="a editable-text">備有私人用餐包廂，建議訂位時告知人數與需求，我們會為您安排合適的座位。</p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">有包廂可以聚餐或慶生嗎<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <div class="a-wrap">
+          <p class="a editable-text">備有私人用餐包廂，建議訂位時告知人數與需求，我們會為您安排合適的座位。</p>
+        </div>
       </div>
       <div class="faq-item">
-        <p class="q editable-text">附近停車方便嗎</p>
-        <p class="a editable-text">本店無特約停車場，可停放至 萬壽棒球場地下停車場(步行至店內約1-2分鐘)、鄰近停車格。</p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">附近停車方便嗎<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <div class="a-wrap">
+          <p class="a editable-text">本店無特約停車場，可停放至 萬壽棒球場地下停車場(步行至店內約1-2分鐘)、鄰近停車格。</p>
+        </div>
       </div>
       <div class="faq-item">
-        <p class="q editable-text">菜單是套餐制還是可以單點</p>
-        <p class="a editable-text">提供雙人套餐，另外也提供單點服務。【白巧克力熟成牛舌】，為限量餐點，訂位時可事先備註。</p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">菜單是套餐制還是可以單點<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <div class="a-wrap">
+          <p class="a editable-text">提供雙人套餐，另外也提供單點服務。【白巧克力熟成牛舌】，為限量餐點，訂位時可事先備註。</p>
+        </div>
       </div>
       <div class="faq-item">
-        <p class="q editable-text">壽星有什麼優惠</p>
-        <p class="a editable-text">【當日壽星】：9折優惠並招待粉紅紫蘇梅酒一杯。【當月壽星】：精選肉品或特色料理乙份。</p><div><div>※壽星需攜帶本人實體證件，恕無法接受翻拍或影本，如有同時多位當日或當月壽星，僅能擇一優惠。</div></div><p></p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">壽星有什麼優惠<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <div class="a-wrap">
+          <p class="a editable-text">【當日壽星】：9折優惠並招待粉紅紫蘇梅酒一杯。【當月壽星】：精選肉品或特色料理乙份。</p><div><div>※壽星需攜帶本人實體證件，恕無法接受翻拍或影本，如有同時多位當日或當月壽星，僅能擇一優惠。</div></div><p></p>
+        </div>
       </div>
     </div>
   </section>
@@ -579,12 +615,18 @@
 
   <!-- ============ RESERVATION CTA (follows scroll) ============ -->
   <div class="float-cta-stack">
-    <div class="float-cta secondary linkable" id="floatPromo" data-href="https://lin.ee/8g3Yqqx">
-      <span class="ember-dot"></span><span class="editable-text">專屬優惠</span>
+    <div class="float-cta line linkable" id="floatLine" data-href="https://lin.ee/8g3Yqqx">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 3.54 2.9 6.54 6.94 7.56-.15.55-.6 2.15-.68 2.48-.1.42.15.41.32.3.13-.09 2.13-1.41 2.99-1.98.79.11 1.6.17 2.43.17 5.52 0 10-3.58 10-8s-4.48-8-10-8zm-4.5 9.5H6a.5.5 0 0 1-.5-.5V8a.5.5 0 0 1 1 0v3.5h1a.5.5 0 0 1 0 1zm2.5 0a.5.5 0 0 1-.5-.5V8a.5.5 0 0 1 1 0v4a.5.5 0 0 1-.5.5zm5-.05a.5.5 0 0 1-.4-.2L12.6 9.8v2.7a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .9-.3l2 2.45V8a.5.5 0 0 1 1 0v4a.5.5 0 0 1-.5.5zm4-3.45h-1.25v1h1.25a.5.5 0 0 1 0 1h-1.75a.5.5 0 0 1-.5-.5V8a.5.5 0 0 1 .5-.5H19a.5.5 0 0 1 0 1z"/></svg>
+      <span class="tooltip editable-text">專屬優惠｜LINE</span>
     </div>
-    <div class="float-cta linkable" id="floatCta" data-href="https://inline.app/booking/-OjTQnAHCIUJU4sv2AMv:inline-live-4/-OjTQnFu_SWAl6bgrVYp">
-      <span class="ember-dot"></span><span class="editable-text">立即訂位</span>
+    <div class="float-cta primary-pulse linkable" id="floatCta" data-href="https://inline.app/booking/-OjTQnAHCIUJU4sv2AMv:inline-live-4/-OjTQnFu_SWAl6bgrVYp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 16l2 2 4-4"/></svg>
+      <span class="tooltip editable-text">立即訂位</span>
     </div>
+    <a class="float-cta phone linkable" id="floatPhone" href="tel:0423204918">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="tooltip editable-text">電話訂位｜04-2320-4918</span>
+    </a>
   </div>
 
   <!-- ============ EDITOR PANEL ============ -->
@@ -865,6 +907,21 @@
       }, 100);
     });
   })();
+  // ===== FAQ 手風琴 =====
+  document.querySelectorAll('.faq-item .q').forEach(q=>{
+    function toggleFaq(){
+      if(document.body.classList.contains('editing')) return;
+      const item = q.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      item.classList.toggle('open', !wasOpen);
+      q.setAttribute('aria-expanded', String(!wasOpen));
+    }
+    q.addEventListener('click', toggleFaq);
+    q.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggleFaq(); }
+    });
+  });
+
   // ===== 手機版迷你選單 =====
   (function(){
     const toggle = document.getElementById('navToggle');
