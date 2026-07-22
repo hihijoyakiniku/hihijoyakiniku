@@ -36,33 +36,33 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/taichung-nantun-yakiniku-menu.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/yakiniku-reservation-guide.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/white-chocolate-beef-tongue-story.html</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/faq-complete-guide.html</loc>
+    <lastmod>2026-07-22</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/about-hihijo-brand-story.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/yakiniku-reservation-guide.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/white-chocolate-beef-tongue-story.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/set-menu-comparison.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/faq-complete-guide.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://hihijoyakiniku.github.io/hihijoyakiniku/taichung-nantun-yakiniku-menu.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>
