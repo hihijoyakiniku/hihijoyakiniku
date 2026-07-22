@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ⚠️ 重要：這個template是「暫用版型」，不是照抄官網現有實際HTML。
+     因為我這邊無法直接讀取 hihijoyakiniku.github.io 的原始碼（該網域沒有被搜尋引擎索引，
+     我的工具只能fetch「已經出現在搜尋結果裡」的網址，抓不到你們現有頁面的真實原始碼）。
+
+     請在正式使用前，把下面這些區塊換成「從現有一篇標準版型文章（例如
+     yakiniku-reservation-guide.html）複製過來的真實內容」：
+       1. <head> 裡官網共用的 <style> 或 <link rel="stylesheet"> 標籤
+       2. 頁首（logo、導覽列 nav）的HTML
+       3. 頁尾（footer，含地址、電話、社群連結等）的HTML
+     複製貼上取代下面標記 [[HEADER_HTML]] [[FOOTER_HTML]] [[SITE_STYLES]] 的地方就好，
+     中間文章內容的置換邏輯（TITLE、SEO、正文、CTA等）不用動。 -->
+
+<title>{{SEO_TITLE}}</title>
+<meta name="description" content="{{META_DESCRIPTION}}">
+<link rel="canonical" href="{{PAGE_URL}}">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{SEO_TITLE}}">
+<meta property="og:description" content="{{META_DESCRIPTION}}">
+<meta property="og:url" content="{{PAGE_URL}}">
+<meta property="og:image" content="{{COVER_IMAGE_URL}}">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="日日敘炭火燒肉">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{SEO_TITLE}}">
+<meta name="twitter:description" content="{{META_DESCRIPTION}}">
+<meta name="twitter:image" content="{{COVER_IMAGE_URL}}">
+
+<!-- [[SITE_STYLES]]：請貼上官網共用的CSS連結或style標籤 -->
+<style>
+  :root{
+    --charcoal:#2B2A28;
+    --gold:#C9A24B;
+    --ivory:#F3ECDD;
+    --border:#3d4a52;
+  }
+  body{background:var(--ivory);color:var(--charcoal);font-family:"Noto Serif TC","PMingLiU",serif;line-height:1.9;margin:0;}
+  .article-wrap{max-width:760px;margin:0 auto;padding:48px 24px 96px;}
+  .breadcrumb{font-size:14px;color:#7a736a;margin-bottom:24px;}
+  h1{font-size:32px;color:var(--charcoal);border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:24px;}
+  h2{font-size:22px;color:var(--gold);margin-top:40px;}
+  .cta-box{margin-top:56px;padding:32px;border:1px solid var(--border);text-align:center;background:#fff;}
+  .cta-button{display:inline-block;margin-top:12px;padding:14px 32px;background:var(--charcoal);color:var(--gold);text-decoration:none;letter-spacing:2px;}
+  .related-reading{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font-size:15px;color:#5a544c;}
+</style>
+
+<!-- Article 結構化資料 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ARTICLE_TITLE_JSON}}",
+  "description": "{{META_DESCRIPTION_JSON}}",
+  "image": "{{COVER_IMAGE_URL}}",
+  "author": { "@type": "Organization", "name": "日日敘炭火燒肉" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "日日敘炭火燒肉",
+    "logo": { "@type": "ImageObject", "url": "https://hihijoyakiniku.github.io/hihijoyakiniku/assets/logo.png" }
+  },
+  "datePublished": "{{DATE_PUBLISHED}}",
+  "dateModified": "{{DATE_MODIFIED}}",
+  "mainEntityOfPage": "{{PAGE_URL}}"
+}
+</script>
+{{FAQ_JSONLD_BLOCK}}
+</head>
+<body>
+
+<!-- [[HEADER_HTML]]：請貼上官網共用的頁首／導覽列HTML -->
+<header><!-- 共用頁首佔位，請替換 --></header>
+
+<main class="article-wrap">
+  <p class="breadcrumb">{{BREADCRUMB}}</p>
+  <h1>{{ARTICLE_TITLE}}</h1>
+
+  <article>
+    {{CONTENT_HTML}}
+  </article>
+
+  <div class="cta-box">
+    <a class="cta-button" href="{{CTA_LINK}}">{{CTA_TEXT}}</a>
+  </div>
+</main>
+
+<!-- [[FOOTER_HTML]]：請貼上官網共用的頁尾HTML -->
+<footer><!-- 共用頁尾佔位，請替換 --></footer>
+
+</body>
+</html>
