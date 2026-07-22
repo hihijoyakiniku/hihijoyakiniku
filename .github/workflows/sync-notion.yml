@@ -1,0 +1,46 @@
+# 這個檔案要放在 repo 的 .github/workflows/sync-notion.yml
+# （不是放在 notion-sync/ 資料夾裡，GitHub Actions只認 .github/workflows/ 底下的yml）
+
+name: 同步Notion文章到官網
+
+on:
+  schedule:
+    - cron: "0 */3 * * *"   # 每3小時自動跑一次，可自行調整頻率
+  workflow_dispatch: {}       # 允許在GitHub網頁上手動點擊執行
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 安裝依賴套件
+        working-directory: notion-sync
+        run: npm install
+
+      - name: 執行Notion同步腳本
+        working-directory: notion-sync
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+        run: node sync-notion-to-html.js
+
+      - name: Commit並推送變更（若有）
+        run: |
+          git config user.name "notion-sync-bot"
+          git config user.email "actions@github.com"
+          git add .
+          if git diff --cached --quiet; then
+            echo "沒有變更，跳過commit"
+          else
+            git commit -m "自動同步：更新Notion文章內容 [skip ci]"
+            git push
+          fi
