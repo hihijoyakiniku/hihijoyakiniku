@@ -1,118 +1,659 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
+<html lang="zh-Hant"><head>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5SJWQ25L2F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5SJWQ25L2F');
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- ⚠️ 重要：這個template是「暫用版型」，不是照抄官網現有實際HTML。
-     因為我這邊無法直接讀取 hihijoyakiniku.github.io 的原始碼（該網域沒有被搜尋引擎索引，
-     我的工具只能fetch「已經出現在搜尋結果裡」的網址，抓不到你們現有頁面的真實原始碼）。
-
-     請在正式使用前，把下面這些區塊換成「從現有一篇標準版型文章（例如
-     yakiniku-reservation-guide.html）複製過來的真實內容」：
-       1. <head> 裡官網共用的 <style> 或 <link rel="stylesheet"> 標籤
-       2. 頁首（logo、導覽列 nav）的HTML
-       3. 頁尾（footer，含地址、電話、社群連結等）的HTML
-     複製貼上取代下面標記 [[HEADER_HTML]] [[FOOTER_HTML]] [[SITE_STYLES]] 的地方就好，
-     中間文章內容的置換邏輯（TITLE、SEO、正文、CTA等）不用動。 -->
-
-<title>日日敘常見問題總整理｜訂位停車寵物包廂｜台中燒肉 | 南屯燒肉 | 聚餐慶生 | 白巧克力牛舌</title>
-<meta name="description" content="日日敘炭火燒肉｜常見問題 怎麼訂位、有沒有停車位、能不能帶寵物、有沒有包廂，通通有解答。">
+<title>日日敘常見問題總整理｜訂位停車寵物包廂｜台中燒肉</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="description" content="日日敘炭火燒肉常見問題一次看：怎麼訂位、有沒有停車位、能不能帶寵物、有沒有包廂，通通有解答。">
 <link rel="canonical" href="https://hihijoyakiniku.github.io/hihijoyakiniku/faq-complete-guide.html">
-
-<!-- Open Graph -->
-<meta property="og:type" content="article">
-<meta property="og:title" content="日日敘常見問題總整理｜訂位停車寵物包廂｜台中燒肉 | 南屯燒肉 | 聚餐慶生 | 白巧克力牛舌">
-<meta property="og:description" content="日日敘炭火燒肉｜常見問題 怎麼訂位、有沒有停車位、能不能帶寵物、有沒有包廂，通通有解答。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="日日敘 HIHIJO 炭火燒肉">
+<meta property="og:title" content="日日敘常見問題總整理｜訂位停車寵物包廂｜台中燒肉">
+<meta property="og:description" content="日日敘炭火燒肉常見問題一次看：怎麼訂位、有沒有停車位、能不能帶寵物、有沒有包廂，通通有解答。">
+<meta property="og:image" content="https://hihijoyakiniku.github.io/hihijoyakiniku/images/photo-4-d020f4264d.jpg">
 <meta property="og:url" content="https://hihijoyakiniku.github.io/hihijoyakiniku/faq-complete-guide.html">
-<meta property="og:image" content="https://hihijoyakiniku.github.io/hihijoyakiniku/assets/images/default-cover.jpg">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:site_name" content="日日敘炭火燒肉">
-
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="日日敘常見問題總整理｜訂位停車寵物包廂｜台中燒肉 | 南屯燒肉 | 聚餐慶生 | 白巧克力牛舌">
-<meta name="twitter:description" content="日日敘炭火燒肉｜常見問題 怎麼訂位、有沒有停車位、能不能帶寵物、有沒有包廂，通通有解答。">
-<meta name="twitter:image" content="https://hihijoyakiniku.github.io/hihijoyakiniku/assets/images/default-cover.jpg">
-
-<!-- [[SITE_STYLES]]：請貼上官網共用的CSS連結或style標籤 -->
+<meta name="twitter:title" content="日日敘常見問題總整理｜訂位停車寵物包廂｜台中燒肉">
+<meta name="twitter:description" content="日日敘炭火燒肉常見問題一次看：怎麼訂位、有沒有停車位、能不能帶寵物、有沒有包廂，通通有解答。">
+<meta name="twitter:image" content="https://hihijoyakiniku.github.io/hihijoyakiniku/images/photo-4-d020f4264d.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&amp;family=Noto+Serif+TC:wght@400;600;700&amp;family=Noto+Sans+TC:wght@300;400;500&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
 <style>
   :root{
-    --charcoal:#2B2A28;
+    --bg:#14110D;
+    --bg-panel:#1C1712;
+    --bg-panel-2:#221B14;
     --gold:#C9A24B;
-    --ivory:#F3ECDD;
-    --border:#3d4a52;
+    --gold-bright:#E8C77E;
+    --ember:#B5502F;
+    --ember-bright:#E07A45;
+    --ink:#F3ECDD;
+    --ink-muted:#A0937A;
+    --line: rgba(201,162,75,0.22);
+    --serif-cjk:'Noto Serif TC', serif;
+    --sans-cjk:'Noto Sans TC', sans-serif;
+    --brush:'Ma Shan Zheng', cursive;
+    --serif-en:'Cormorant Garamond', serif;
   }
-  body{background:var(--ivory);color:var(--charcoal);font-family:"Noto Serif TC","PMingLiU",serif;line-height:1.9;margin:0;}
-  .article-wrap{max-width:760px;margin:0 auto;padding:48px 24px 96px;}
-  .breadcrumb{font-size:14px;color:#7a736a;margin-bottom:24px;}
-  h1{font-size:32px;color:var(--charcoal);border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:24px;}
-  h2{font-size:22px;color:var(--gold);margin-top:40px;}
-  .cta-box{margin-top:56px;padding:32px;border:1px solid var(--border);text-align:center;background:#fff;}
-  .cta-button{display:inline-block;margin-top:12px;padding:14px 32px;background:var(--charcoal);color:var(--gold);text-decoration:none;letter-spacing:2px;}
-  .related-reading{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font-size:15px;color:#5a544c;}
-</style>
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--bg); color:var(--ink); font-family:var(--sans-cjk); line-height:1.7; }
+  a{color:inherit; text-decoration:none;}
 
-<!-- Article 結構化資料 -->
+  /* ---------- top nav ---------- */
+  .topnav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 5vw;
+    background:linear-gradient(to bottom, rgba(20,17,13,0.92), rgba(20,17,13,0.6));
+    border-bottom:1px solid var(--line);
+  }
+  .topnav .mark{ font-family:var(--brush); font-size:36.4px; color:var(--gold-bright); letter-spacing:2px; display:inline-flex; align-items:center; }
+  .topnav .mark img{ height:1em; width:auto; display:block; }
+
+  /* ---------- 浮動按鈕（與首頁一致） ---------- */
+  .float-cta-stack{
+    position:fixed; bottom:28px; right:28px; z-index:60;
+    display:flex; flex-direction:column; align-items:flex-end; gap:14px;
+  }
+  .float-cta{
+    position:relative; display:flex; align-items:center; justify-content:center;
+    width:54px; height:54px; border-radius:50%; border:1px solid transparent;
+    cursor:pointer; transition:transform .3s ease, box-shadow .3s ease, filter .3s ease;
+  }
+  .float-cta svg{ width:24px; height:24px; }
+  .float-cta:hover{ transform:translateX(-5px); filter:brightness(1.1); }
+  .float-cta.line{ background:var(--gold); color:#1C1712; }
+  .float-cta.phone{ background:var(--gold); color:#1C1712; }
+  .float-cta.primary-pulse{ background:var(--gold-bright); color:#1C1712; }
+  .float-cta .tooltip{
+    position:absolute; right:calc(100% + 14px); top:50%;
+    transform:translateY(-50%) translateX(10px);
+    background:#0F0D0A; border:1px solid var(--gold); color:var(--gold-bright);
+    padding:7px 16px; border-radius:6px; font-size:13px; letter-spacing:1px;
+    white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .float-cta:hover .tooltip{ opacity:1; transform:translateY(-50%) translateX(0); }
+  .float-cta.primary-pulse{ animation:cta-pulse 2.2s ease-in-out infinite; }
+  @keyframes cta-pulse{
+    0%{ box-shadow:0 0 0 0 rgba(201,162,75,0.5); }
+    70%{ box-shadow:0 0 0 12px rgba(201,162,75,0); }
+    100%{ box-shadow:0 0 0 0 rgba(201,162,75,0); }
+  }
+  @media(max-width:480px){
+    .float-cta{ width:48px; height:48px; }
+    .float-cta svg{ width:21px; height:21px; }
+  }
+  .float-cta-stack .link-badge{ top:-12px; left:-12px; }
+  .topnav ul{ list-style:none; display:none; gap:38px; font-size:14px; letter-spacing:2px; color:var(--ink-muted); }
+  .topnav ul li a:hover{ color:var(--gold-bright); }
+  @media(min-width:820px){ .topnav ul{ display:flex; } }
+
+  /* ---------- 手機版導覽（迷你選單） ---------- */
+  .nav-toggle{
+    display:none; width:40px; height:40px; border-radius:50%;
+    border:1px solid var(--gold); background:rgba(15,13,10,0.6); color:var(--gold-bright);
+    font-size:18px; align-items:center; justify-content:center; cursor:pointer;
+  }
+  @media(max-width:819px){ .nav-toggle{ display:flex; } }
+  @media(max-width:819px){
+    .topnav ul{
+      display:none; position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0; background:#0F0D0A; border-bottom:1px solid var(--line);
+      padding:8px 6vw 20px;
+    }
+    .topnav ul.mobile-open{ display:flex; }
+    .topnav ul li{ padding:14px 0; border-bottom:1px solid rgba(201,162,75,0.12); }
+    .topnav ul li:last-child{ border-bottom:none; }
+  }
+
+  /* ---------- article header ---------- */
+  .article-header{ padding:150px 6vw 60px; max-width:760px; margin:0 auto; text-align:center; }
+  .breadcrumb{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    font-family:var(--serif-en); font-style:italic; font-size:13px; letter-spacing:2px; color:var(--ink-muted);
+    margin-bottom:22px;
+  }
+  .breadcrumb a:hover{ color:var(--gold-bright); }
+  .category-tag{
+    display:inline-block; padding:6px 16px; border:1px solid var(--gold); border-radius:20px;
+    font-size:12px; letter-spacing:3px; color:var(--gold-bright); margin-bottom:24px;
+  }
+  .article-title{
+    font-family:var(--serif-cjk); font-weight:700; font-size:clamp(28px, 5vw, 46px);
+    letter-spacing:2px; line-height:1.5; color:var(--ink);
+  }
+  .article-meta{
+    margin-top:20px; font-size:13px; letter-spacing:2px; color:var(--ink-muted);
+    display:flex; align-items:center; justify-content:center; gap:14px;
+  }
+  .article-meta .dot{ width:3px; height:3px; border-radius:50%; background:var(--ink-muted); }
+
+  /* ---------- cover image ---------- */
+  .cover{ max-width:1040px; margin:0 auto; padding:0 6vw 60px; }
+  .cover-frame{
+    aspect-ratio:16/9; border-radius:2px; position:relative; overflow:hidden;
+    background-size:cover; background-position:center;
+    background-image:
+      radial-gradient(circle at 30% 20%, rgba(224,122,69,0.22), transparent 55%),
+      radial-gradient(circle at 70% 80%, rgba(181,80,47,0.28), transparent 50%),
+      linear-gradient(155deg, #241B12 0%, #16110C 70%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cover-frame span{ font-size:12px; letter-spacing:2px; color:rgba(243,236,221,0.4); border:1px dashed rgba(243,236,221,0.25); padding:6px 14px; border-radius:20px; }
+
+  /* ---------- article body ---------- */
+  .article-body{ max-width:720px; margin:0 auto; padding:0 6vw 100px; }
+  .article-body p{ font-size:17px; color:var(--ink); margin-bottom:26px; }
+  .article-body p.lede{ font-family:var(--serif-cjk); font-weight:600; font-size:20px; color:var(--gold-bright); line-height:1.9; }
+  .article-body h2{
+    font-family:var(--serif-cjk); font-weight:600; font-size:24px; letter-spacing:1px;
+    margin:48px 0 20px; padding-top:24px; border-top:1px solid var(--line);
+  }
+  .article-body ul{ margin:0 0 26px 22px; }
+  .article-body li{ font-size:16px; margin-bottom:10px; }
+  .pull-figure{
+    aspect-ratio:16/9; border-radius:2px; margin:36px 0; position:relative; overflow:hidden;
+    background-size:cover; background-position:center;
+    background-image:linear-gradient(160deg, #2A2015 0%, #17130E 75%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .pull-figure span{ font-size:12px; letter-spacing:2px; color:rgba(243,236,221,0.35); }
+
+  /* ---------- cta block ---------- */
+  .article-cta{ max-width:720px; margin:0 auto 100px; padding:0 6vw; }
+  .cta-card{ border:1px solid var(--gold); border-radius:4px; padding:40px 32px; text-align:center; background:var(--bg-panel); }
+  .cta-card p{ font-family:var(--serif-cjk); font-weight:600; font-size:20px; color:var(--ink); margin-bottom:24px; }
+  .cta-card a{
+    display:inline-block; padding:14px 36px; border:1px solid var(--gold); border-radius:40px;
+    color:var(--gold-bright); font-size:14px; letter-spacing:3px; transition:background .3s ease;
+  }
+  .cta-card a:hover{ background:rgba(201,162,75,0.12); }
+
+  /* ---------- related list ---------- */
+  .related{ max-width:1040px; margin:0 auto; padding:0 6vw 120px; }
+  .related h3{ font-family:var(--serif-en); font-style:italic; letter-spacing:2px; color:var(--gold); font-size:20px; margin-bottom:32px; display:flex; align-items:center; gap:16px; }
+  .related h3::after{ content:''; flex:1; height:1px; background:var(--line); }
+  .related-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  @media(max-width:760px){ .related-grid{ grid-template-columns:1fr; gap:32px; } }
+  .related-card{ border:1px solid var(--line); border-radius:4px; overflow:hidden; display:block; }
+  .related-card .thumb{
+    aspect-ratio:4/3; background-size:cover; background-position:center;
+    background-image:linear-gradient(160deg, #241D14 0%, #14110D 75%);
+  }
+  @media(max-width:760px){ .related-card .thumb{ aspect-ratio:16/11; } }
+  .related-card .info{ padding:22px; }
+  .related-card .info .tag{ font-size:12px; letter-spacing:2px; color:var(--gold); }
+  .related-card .info h4{ font-family:var(--serif-cjk); font-size:19px; margin-top:10px; line-height:1.7; }
+  @media(max-width:760px){ .related-card .info h4{ font-size:21px; } }
+  .related-card:hover .info h4{ color:var(--gold-bright); }
+
+  /* ---------- footer ---------- */
+  footer{ padding:60px 6vw 40px; border-top:1px solid var(--line); background:#0F0D0A; text-align:center; }
+  footer .mark{ font-family:var(--brush); font-size:32px; color:var(--gold-bright); }
+  footer p{ margin-top:14px; font-size:12px; letter-spacing:2px; color:var(--ink-muted); }
+
+  /* ================= EDITOR SYSTEM（與首頁一致） ================= */
+  body.editing [contenteditable="true"]{ outline:1px dashed rgba(201,162,75,0.5); outline-offset:4px; cursor:text; }
+  body.editing [contenteditable="true"]:focus{ outline:1px solid var(--gold-bright); background:rgba(201,162,75,0.06); }
+
+  .img-upload{ position:relative; cursor:default; }
+  body.editing .img-upload{ cursor:pointer; outline:1px dashed rgba(224,122,69,0.55); outline-offset:-1px; }
+  body.editing .img-upload::after{
+    content:attr(data-label);
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    background:rgba(15,13,10,0.55); color:var(--gold-bright); font-size:12px; letter-spacing:2px;
+    opacity:0; transition:opacity .25s ease; z-index:3; text-align:center; padding:8px; pointer-events:none;
+  }
+  body.editing .img-upload:hover::after{ opacity:1; }
+
+  .linkable{ position:relative; }
+  .link-badge{
+    display:none; position:absolute; top:8px; left:8px; z-index:7;
+    width:26px; height:26px; border-radius:50%; border:1px solid var(--gold);
+    background:rgba(15,13,10,0.85); color:var(--gold-bright); font-size:12px;
+    align-items:center; justify-content:center; cursor:pointer; padding:0; line-height:1;
+  }
+  body.editing .linkable .link-badge{ display:flex; }
+  .link-badge:hover{ background:rgba(201,162,75,0.35); }
+  .link-badge.has-link{ border-color:var(--ember-bright); color:var(--ember-bright); }
+  .topnav .linkable .link-badge, .breadcrumb .linkable .link-badge{
+    top:50%; left:auto; right:-32px; transform:translateY(-50%);
+  }
+  .cta-card .linkable .link-badge{ top:-14px; left:50%; transform:translateX(-50%); }
+
+  .editor-panel{
+    position:fixed; bottom:28px; left:28px; z-index:80;
+    display:none; flex-direction:column; align-items:flex-start; gap:0;
+    font-family:var(--sans-cjk);
+  }
+  .editor-panel.show{ display:flex; }
+  .editor-toggle{
+    width:48px; height:48px; border-radius:50%; border:1px solid var(--gold);
+    background:#0F0D0A; color:var(--gold-bright); font-size:18px; cursor:pointer;
+  }
+  .editor-controls{
+    display:none; flex-direction:column; gap:14px; margin-bottom:12px;
+    background:#0F0D0A; border:1px solid var(--gold); border-radius:10px;
+    padding:18px; width:250px; order:-1;
+  }
+  .editor-controls.open{ display:flex; }
+  .editor-row{ display:flex; align-items:center; justify-content:space-between; font-size:13px; color:var(--ink); }
+  .editor-row input[type="checkbox"]{ width:36px; height:20px; accent-color:var(--gold); cursor:pointer; }
+  .editor-row input[type="color"]{ width:40px; height:26px; border:1px solid var(--line); border-radius:4px; background:none; cursor:pointer; padding:0; }
+  .preset-colors{ display:flex; gap:8px; }
+  .preset-colors span{ width:20px; height:20px; border-radius:50%; cursor:pointer; border:1px solid rgba(255,255,255,0.2); }
+  .editor-hint{ font-size:11px; color:var(--ink-muted); line-height:1.6; }
+  .editor-export{
+    padding:10px; border-radius:6px; border:1px solid var(--gold); background:transparent;
+    color:var(--gold-bright); font-size:12px; letter-spacing:1px; cursor:pointer;
+  }
+  .editor-export:hover{ background:rgba(201,162,75,0.12); }
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "日日敘常見問題總整理：訂位、停車、寵物、包廂通通有解",
-  "description": "日日敘炭火燒肉｜常見問題 怎麼訂位、有沒有停車位、能不能帶寵物、有沒有包廂，通通有解答。",
-  "image": "https://hihijoyakiniku.github.io/hihijoyakiniku/assets/images/default-cover.jpg",
-  "author": { "@type": "Organization", "name": "日日敘炭火燒肉" },
+  "image": "https://hihijoyakiniku.github.io/hihijoyakiniku/images/photo-4-d020f4264d.jpg",
+  "author": {"@type": "Organization", "name": "日日敘 HIHIJO 炭火燒肉"},
   "publisher": {
     "@type": "Organization",
-    "name": "日日敘炭火燒肉",
-    "logo": { "@type": "ImageObject", "url": "https://hihijoyakiniku.github.io/hihijoyakiniku/assets/logo.png" }
+    "name": "日日敘 HIHIJO 炭火燒肉",
+    "logo": {"@type": "ImageObject", "url": "https://hihijoyakiniku.github.io/hihijoyakiniku/images/logo-1-1b65f82d4d.png"}
   },
-  "datePublished": "2026-07-22",
-  "dateModified": "2026-07-22",
-  "mainEntityOfPage": "https://hihijoyakiniku.github.io/hihijoyakiniku/faq-complete-guide.html"
+  "datePublished": "2026-07-21",
+  "dateModified": "2026-07-21",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://hihijoyakiniku.github.io/hihijoyakiniku/faq-complete-guide.html"},
+  "description": "日日敘炭火燒肉常見問題一次看：怎麼訂位、有沒有停車位、能不能帶寵物、有沒有包廂，通通有解答。"
 }
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"需要訂位嗎？現場候位可以嗎？","acceptedAnswer":{"@type":"Answer","text":"建議提前透過 inline訂位、8位以上可電話訂位，方便我們安排座位與食材備量，假日尤其建議提早預約。"}},{"@type":"Question","name":"菜單是套餐制還是可以單點？","acceptedAnswer":{"@type":"Answer","text":"主打職人炭火燒肉，提供三種雙人套餐，也可以純單點品項，沒有低消。"}},{"@type":"Question","name":"有適合帶小朋友的座位嗎？","acceptedAnswer":{"@type":"Answer","text":"提供兒童高腳椅，歡迎攜家帶眷一同用餐。"}},{"@type":"Question","name":"有包廂可以聚餐或慶生嗎？","acceptedAnswer":{"@type":"Answer","text":"備有私人用餐包廂，建議訂位時告知人數與需求，我們會為您安排合適的座位。"}},{"@type":"Question","name":"附近停車方便嗎？","acceptedAnswer":{"@type":"Answer","text":"店外備有收費路邊停車格，鄰近萬壽棒球場地下停車場(步行至店內約1-2分鐘)可多加利用。"}},{"@type":"Question","name":"可以攜帶寵物嗎？","acceptedAnswer":{"@type":"Answer","text":"歡迎帶毛寶貝一起來用餐，需有專屬的「推車或提籃」，並自備保潔墊就能與寶貝一起享用餐點唷！"}},{"@type":"Question","name":"如何加入會員？","acceptedAnswer":{"@type":"Answer","text":"透過 LINE 官方帳號：@182njhao 即可加入會員，將不定時有最新優惠，敬請期待。"}}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "需要訂位嗎？現場候位可以嗎？",
+      "acceptedAnswer": {"@type": "Answer", "text": "建議提前透過 LINE 官方帳號或電話訂位，方便我們安排座位與食材備量，假日尤其建議提早預約。"}
+    },
+    {
+      "@type": "Question",
+      "name": "菜單是套餐制還是可以單點？",
+      "acceptedAnswer": {"@type": "Answer", "text": "主打 omakase 式炭火燒肉，提供多種價位套餐並可加點單品，招牌是每日限量的巧克力熟成牛舌。"}
+    },
+    {
+      "@type": "Question",
+      "name": "有適合帶小朋友的座位嗎？",
+      "acceptedAnswer": {"@type": "Answer", "text": "提供兒童高腳椅，歡迎攜家帶眷一同用餐。"}
+    },
+    {
+      "@type": "Question",
+      "name": "有包廂可以聚餐或慶生嗎？",
+      "acceptedAnswer": {"@type": "Answer", "text": "備有私人用餐包廂，建議訂位時告知人數與需求，我們會為您安排合適的座位。"}
+    },
+    {
+      "@type": "Question",
+      "name": "附近停車方便嗎？",
+      "acceptedAnswer": {"@type": "Answer", "text": "店外備有收費路邊停車格，鄰近也有收費停車場可供使用。"}
+    },
+    {
+      "@type": "Question",
+      "name": "可以攜帶寵物嗎？",
+      "acceptedAnswer": {"@type": "Answer", "text": "允許攜帶狗狗入內，實際入座區域請依現場安排為準。"}
+    },
+    {
+      "@type": "Question",
+      "name": "怎麼加入會員？有什麼優惠？",
+      "acceptedAnswer": {"@type": "Answer", "text": "透過 LINE 官方帳號即可加入 OCard 會員，消費集點兌換優惠，最新活動請留意「最新優惠」頁面。"}
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
-<!-- [[HEADER_HTML]]：請貼上官網共用的頁首／導覽列HTML -->
-<header><!-- 共用頁首佔位，請替換 --></header>
+  <!-- ============ TOP NAV ============ -->
+  <nav class="topnav">
+    <a href="index.html" class="mark logo-slot linkable"><img src="images/logo-1-1b65f82d4d.png" alt="日日敘 Logo"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單">☰</button>
+    <ul>
+      <li><a href="https://hihijoyakiniku.github.io/hihijoyakiniku/" class="editable-text linkable">首頁</a></li>
+      <li><a href="menu.html" class="editable-text linkable">菜單參考</a></li>      <li><a href="news.html" class="editable-text linkable">最新優惠</a></li>
+      <li><a href="contact.html" class="editable-text linkable">聯絡我們</a></li>
+    </ul>
+  </nav>
 
-<main class="article-wrap">
-  <p class="breadcrumb">首頁 ＞ 聯絡我們 ＞ 常見問題</p>
-  <h1>日日敘常見問題總整理：訂位、停車、寵物、包廂通通有解</h1>
+  <!-- ============ ARTICLE HEADER ============ -->
+  <header class="article-header">
+    <div class="breadcrumb">
+      <a href="index.html" class="editable-text linkable">首頁</a><span>/</span><a href="contact.html" class="editable-text linkable">聯絡我們</a>
+    </div>
+    <span class="category-tag editable-text">常見問題 · FAQ</span>
+    <h1 class="article-title editable-text">日日敘常見問題總整理：訂位、停車、寵物、包廂通通有解</h1>
+    <div class="article-meta">
+      <span class="editable-text">2026 年 7 月</span><span class="dot"></span><span class="editable-text">日日敘 hihijoyakiniku</span>
+    </div>
+  </header>
 
-  <article>
-    <p>敘編為您彙整了顧客常見問題，現在馬上為您解答！</p>
-<h2>需要訂位嗎？現場候位可以嗎？</h2>
-<p>建議提前透過 inline訂位、8位以上可電話訂位，方便我們安排座位與食材備量，假日尤其建議提早預約。</p>
-<h2>菜單是套餐制還是可以單點？</h2>
-<p>主打職人炭火燒肉，提供三種雙人套餐，也可以純單點品項，沒有低消。</p>
-<p>想先預點：招牌菜 <strong>每日限量的白巧克力熟成牛舌</strong>，記得在訂位時留下備註或致電預訂唷！</p>
-<h2>有適合帶小朋友的座位嗎？</h2>
-<p>提供兒童高腳椅，歡迎攜家帶眷一同用餐。</p>
-<h2>有包廂可以聚餐或慶生嗎？</h2>
-<p>備有私人用餐包廂，建議訂位時告知人數與需求，我們會為您安排合適的座位。</p>
-<h2>附近停車方便嗎？</h2>
-<p>店外備有收費路邊停車格，鄰近萬壽棒球場地下停車場(步行至店內約1-2分鐘)可多加利用。</p>
-<h2>可以攜帶寵物嗎？</h2>
-<p>歡迎帶毛寶貝一起來用餐，需有專屬的「推車或提籃」，並自備保潔墊就能與寶貝一起享用餐點唷！</p>
-<h2>如何加入會員？</h2>
-<p>透過 LINE 官方帳號：@182njhao 即可加入會員，將不定時有最新優惠，敬請期待。</p>
-<p>若有其他相關問題，可透過電話（04-2320-4918）、facebook、instagram直接聯繫我們。</p>
-<p><strong>延伸閱讀</strong>：訂位前想先確認菜單？看〈完整菜單與價位〉</p>
-<p><strong>還有其他問題嗎？歡迎直接聯繫我們｜立即訂位：</strong><a href="https://reurl.cc/Ggma9W">https://reurl.cc/Ggma9W</a></p>
+  <!-- ============ COVER IMAGE ============ -->
+  <div class="cover">
+    <div class="cover-frame img-upload" data-label="點擊上傳封面照片（建議 1600×900）" style="background-image:url(&quot;images/photo-4-d020f4264d.jpg&quot;);"><span class="editable-text" style="display:none;">封面照片待補（建議 1600×900）</span></div>
+  </div>
+
+  <!-- ============ ARTICLE BODY ============ -->
+  <article class="article-body">
+    
+    <p class="lede editable-text">第一次來日日敘用餐前，可能會有些小疑問——這篇整理了最常被問到的問題，讓你出發前心裡有底。</p>
+
+    <h2 class="editable-text">需要訂位嗎？現場候位可以嗎？</h2>
+    <p class="editable-text">建議提前透過 LINE 官方帳號或電話訂位，方便我們安排座位與食材備量，假日尤其建議提早預約。</p>
+
+    <h2 class="editable-text">菜單是套餐制還是可以單點？</h2>
+    <p class="editable-text">主打 omakase 式炭火燒肉，提供多種價位套餐並可加點單品，招牌是每日限量的巧克力熟成牛舌。</p>
+
+    <h2 class="editable-text">有適合帶小朋友的座位嗎？</h2>
+    <p class="editable-text">提供兒童高腳椅，歡迎攜家帶眷一同用餐。</p>
+
+    <h2 class="editable-text">有包廂可以聚餐或慶生嗎？</h2>
+    <p class="editable-text">備有私人用餐包廂，建議訂位時告知人數與需求，我們會為您安排合適的座位。</p>
+
+    <h2 class="editable-text">附近停車方便嗎？</h2>
+    <p class="editable-text">店外備有收費路邊停車格，鄰近也有收費停車場可供使用。</p>
+
+    <h2 class="editable-text">可以攜帶寵物嗎？</h2>
+    <p class="editable-text">允許攜帶狗狗入內，實際入座區域請依現場安排為準。</p>
+
+    <h2 class="editable-text">怎麼加入會員？有什麼優惠？</h2>
+    <p class="editable-text">透過 LINE 官方帳號即可加入 OCard 會員，消費集點兌換優惠，最新活動請留意「最新優惠」頁面。</p>
+
+    <p class="editable-text">還有其他問題嗎？歡迎透過 LINE 官方帳號或電話直接聯繫我們。</p>
 
   </article>
 
-  <div class="cta-box">
-    <a class="cta-button" href="https://reurl.cc/Ggma9W">立即訂位</a>
+  <!-- ============ CTA ============ -->
+  <div class="article-cta">
+    <div class="cta-card">
+      <p class="editable-text">還有其他問題嗎？歡迎直接聯繫我們</p>
+      <a href="https://inline.app/booking/-OjTQnAHCIUJU4sv2AMv:inline-live-4/-OjTQnFu_SWAl6bgrVYp" class="editable-text linkable">立即訂位</a>
+    </div>
   </div>
-</main>
 
-<!-- [[FOOTER_HTML]]：請貼上官網共用的頁尾HTML -->
-<footer><!-- 共用頁尾佔位，請替換 --></footer>
+  <!-- ============ MORE OFFERS ============ -->
+  <section class="related">
+    <h3><span class="editable-text">更多優惠 · MORE OFFERS</span></h3>
+    <div class="related-grid">
+      <a class="related-card linkable" href="yakiniku-reservation-guide.html">
+        <div class="thumb" style="background-image:url(&quot;images/contact-storefront.jpg&quot;); background-size:cover; background-position:center;"></div>
+        <div class="info"><span class="tag editable-text">訂位攻略</span><h4 class="editable-text">燒肉店訂位攻略：台中日式燒肉這樣訂位不踩雷</h4></div>
+      </a>
+      <a class="related-card linkable" href="taichung-nantun-yakiniku-menu.html">
+        <div class="thumb" style="background-image:url(&quot;images/menu-set-1.jpg&quot;); background-size:cover; background-position:center;"></div>
+        <div class="info"><span class="tag editable-text">菜單導覽</span><h4 class="editable-text">台中南屯燒肉推薦：日日敘炭火燒肉完整菜單與價位</h4></div>
+      </a>
+      <a class="related-card linkable" href="contact.html">
+        <div class="thumb" style="background-image:url(&quot;images/contact-storefront.jpg&quot;); background-size:cover; background-position:center;"></div>
+        <div class="info"><span class="tag editable-text">查看全部</span><h4 class="editable-text">回到聯絡我們頁面</h4></div>
+      </a>
+    </div>
+  </section>
 
-</body>
-</html>
+  <footer>
+    <div class="mark"><img src="images/logo-1-1b65f82d4d.png" alt="日日敘 Logo" style="height:1em;width:auto;display:inline-block;"></div>
+    <p class="editable-text">© 2026 HIHIJO 日日敘 · 台中市南屯區大墩路468號</p>
+  </footer>
+
+  <div class="float-cta-stack">
+    <div class="float-cta line linkable" id="floatLine" data-href="https://lin.ee/8g3Yqqx">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 3.54 2.9 6.54 6.94 7.56-.15.55-.6 2.15-.68 2.48-.1.42.15.41.32.3.13-.09 2.13-1.41 2.99-1.98.79.11 1.6.17 2.43.17 5.52 0 10-3.58 10-8s-4.48-8-10-8zm-4.5 9.5H6a.5.5 0 0 1-.5-.5V8a.5.5 0 0 1 1 0v3.5h1a.5.5 0 0 1 0 1zm2.5 0a.5.5 0 0 1-.5-.5V8a.5.5 0 0 1 1 0v4a.5.5 0 0 1-.5.5zm5-.05a.5.5 0 0 1-.4-.2L12.6 9.8v2.7a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .9-.3l2 2.45V8a.5.5 0 0 1 1 0v4a.5.5 0 0 1-.5.5zm4-3.45h-1.25v1h1.25a.5.5 0 0 1 0 1h-1.75a.5.5 0 0 1-.5-.5V8a.5.5 0 0 1 .5-.5H19a.5.5 0 0 1 0 1z"/></svg>
+      <span class="tooltip editable-text">專屬優惠｜LINE</span>
+    </div>
+    <div class="float-cta primary-pulse linkable" id="floatCta" data-href="https://inline.app/booking/-OjTQnAHCIUJU4sv2AMv:inline-live-4/-OjTQnFu_SWAl6bgrVYp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 16l2 2 4-4"/></svg>
+      <span class="tooltip editable-text">立即訂位</span>
+    </div>
+    <a class="float-cta phone linkable" id="floatPhone" href="tel:0423204918">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="tooltip editable-text">電話訂位｜04-2320-4918</span>
+    </a>
+  </div>
+
+  <!-- ============ EDITOR PANEL ============ -->
+  <div class="editor-panel" id="editorPanel">
+    <div class="editor-controls" id="editorControls">
+      <label class="editor-row">
+        <span>編輯模式</span>
+        <input type="checkbox" id="editModeSwitch">
+      </label>
+      <div class="editor-row">
+        <span>文字顏色</span>
+        <input type="color" id="colorPicker" value="#F3ECDD">
+      </div>
+      <div class="preset-colors">
+        <span style="background:#F3ECDD" data-color="#F3ECDD"></span>
+        <span style="background:#E8C77E" data-color="#E8C77E"></span>
+        <span style="background:#C9A24B" data-color="#C9A24B"></span>
+        <span style="background:#E07A45" data-color="#E07A45"></span>
+        <span style="background:#A0937A" data-color="#A0937A"></span>
+      </div>
+      <label class="editor-row">
+        <span>字型</span>
+        <select id="fontPicker" style="max-width:150px;">
+          <option value="">（沿用預設）</option>
+          <option value="'Noto Serif TC', serif">Noto Serif TC（標楷／標題感）</option>
+          <option value="'Noto Sans TC', sans-serif">Noto Sans TC（黑體／內文感）</option>
+          <option value="'Cormorant Garamond', serif">Cormorant Garamond（英文襯線）</option>
+          <option value="'Ma Shan Zheng', cursive">Ma Shan Zheng（毛筆字）</option>
+        </select>
+      </label>
+      <label class="editor-row">
+        <span>字級</span>
+        <input type="number" id="fontSizePicker" min="10" max="72" step="1" style="width:64px;" placeholder="px">
+      </label>
+      <div class="editor-hint">開啟編輯後：點文字可直接修改內容；點圖片區塊可上傳照片；選取文字後用顏色點修改顏色；點一下文字（不用選取）再調整「字型」「字級」，會套用到整段文字；點區塊上的 🔗 圖示可加入或修改連結網址。完成後按「匯出目前版本」下載你編輯好的檔案。</div>
+      <button class="editor-export" id="exportBtn">匯出目前版本</button>
+    </div>
+    <button class="editor-toggle" id="editorToggleBtn" title="編輯此頁">✎</button>
+  </div>
+  
+  
+
+<script>
+  // ===== editor panel open/close =====
+  // 網址加上 #edit 才會顯示編輯面板，一般訪客瀏覽不會看到
+  if(window.location.hash === '#edit'){
+    const ep = document.getElementById('editorPanel');
+    if(ep) ep.classList.add('show');
+  }
+  const editorToggleBtn = document.getElementById('editorToggleBtn');
+  const editorControls = document.getElementById('editorControls');
+  if(editorToggleBtn && editorControls){
+    editorToggleBtn.addEventListener('click', ()=> editorControls.classList.toggle('open'));
+  }
+
+  // ===== edit mode =====
+  const editModeSwitch = document.getElementById('editModeSwitch');
+  function setEditMode(on){
+    document.body.classList.toggle('editing', on);
+    document.querySelectorAll('.editable-text').forEach(el=>{
+      el.setAttribute('contenteditable', on ? 'true' : 'false');
+    });
+  }
+  if(editModeSwitch){ editModeSwitch.addEventListener('change', e=> setEditMode(e.target.checked)); }
+
+  // ===== text color =====
+  let currentEditable = null;
+  document.querySelectorAll('.editable-text').forEach(el=>{
+    el.addEventListener('focus', ()=> currentEditable = el);
+    el.addEventListener('click', ()=> currentEditable = el);
+  });
+  const colorPicker = document.getElementById('colorPicker');
+  function applyColor(hex){
+    if(!currentEditable) return;
+    const sel = window.getSelection();
+    if(sel && sel.rangeCount && !sel.isCollapsed && currentEditable.contains(sel.anchorNode)){
+      const span = document.createElement('span');
+      span.style.color = hex;
+      try{ sel.getRangeAt(0).surroundContents(span); }catch(e){ currentEditable.style.color = hex; }
+    } else {
+      currentEditable.style.color = hex;
+    }
+  }
+  if(colorPicker){ colorPicker.addEventListener('input', (e)=> applyColor(e.target.value)); }
+  document.querySelectorAll('.preset-colors span').forEach(sw=>{
+    sw.addEventListener('click', ()=> applyColor(sw.dataset.color));
+  });
+
+  // ===== font family & font size =====
+  const fontPicker = document.getElementById('fontPicker');
+  if(fontPicker){
+    fontPicker.addEventListener('change', (e)=>{
+      if(!currentEditable) return;
+      if(e.target.value === ''){ currentEditable.style.fontFamily = ''; }
+      else { currentEditable.style.fontFamily = e.target.value; }
+    });
+  }
+  const fontSizePicker = document.getElementById('fontSizePicker');
+  if(fontSizePicker){
+    fontSizePicker.addEventListener('input', (e)=>{
+      if(!currentEditable) return;
+      const val = e.target.value;
+      if(val === ''){ currentEditable.style.fontSize = ''; }
+      else { currentEditable.style.fontSize = val + 'px'; }
+    });
+  }
+  document.querySelectorAll('.editable-text').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      if(fontSizePicker){
+        const size = window.getComputedStyle(el).fontSize;
+        fontSizePicker.value = parseInt(size, 10) || '';
+      }
+      if(fontPicker){ fontPicker.value = ''; }
+    });
+  });
+
+  // ===== image upload =====
+  document.querySelectorAll('.img-upload').forEach(zone=>{
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = 'image/*'; input.style.display = 'none';
+    zone.appendChild(input);
+    zone.addEventListener('click', (e)=>{
+      if(!document.body.classList.contains('editing')) return;
+      if(e.target.closest('.link-badge')) return;
+      e.preventDefault();
+      e.stopPropagation();
+      input.click();
+    });
+    input.addEventListener('change', ()=>{
+      const file = input.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev)=>{
+        zone.style.backgroundImage = `url(${ev.target.result})`;
+        const note = zone.querySelector('.editable-text');
+        if(note) note.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+  // ===== linkable blocks: add / edit a URL =====
+  document.querySelectorAll('.linkable').forEach(el=>{
+    if(el.querySelector(':scope > .link-badge')) return;
+    const isAnchor = el.tagName === 'A';
+    const badge = document.createElement('span');
+    badge.className = 'link-badge';
+    badge.textContent = '🔗';
+    badge.setAttribute('role', 'button');
+    badge.setAttribute('tabindex', '0');
+    badge.setAttribute('aria-label', '設定連結網址');
+    el.appendChild(badge);
+
+    function currentUrl(){
+      const href = isAnchor ? (el.getAttribute('href') || '') : (el.dataset.href || '');
+      return (href === '#' || href === '') ? '' : href;
+    }
+    function refreshBadge(){
+      const url = currentUrl();
+      badge.classList.toggle('has-link', !!url);
+      badge.title = url ? ('目前連結：' + url + '（點擊修改）') : '點擊加入連結網址';
+    }
+    refreshBadge();
+
+    function openLinkPrompt(e){
+      e.preventDefault();
+      e.stopPropagation();
+      const input = prompt('請輸入連結網址\n（例如 https://... ／ tel:0423204918 ／ https://line.me/R/ti/p/...）\n留空可清除連結：', currentUrl());
+      if(input === null) return;
+      const url = input.trim();
+      if(isAnchor){
+        el.setAttribute('href', url === '' ? '#' : url);
+      } else {
+        if(url === ''){ delete el.dataset.href; }
+        else { el.dataset.href = url; }
+      }
+      refreshBadge();
+    }
+    badge.addEventListener('click', openLinkPrompt);
+    badge.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') openLinkPrompt(e); });
+
+    if(!isAnchor){
+      el.addEventListener('click', (e)=>{
+        if(document.body.classList.contains('editing')) return;
+        if(e.target === badge) return;
+        const url = currentUrl();
+        if(url) window.location.href = url;
+      });
+    }
+  });
+
+  // ===== export edited version =====
+  const exportBtnEl = document.getElementById('exportBtn');
+  if(exportBtnEl) exportBtnEl.addEventListener('click', ()=>{
+    const clone = document.documentElement.cloneNode(true);
+    const panel = clone.querySelector('#editorPanel');
+    if(panel) panel.remove();
+    clone.classList.remove('editing');
+    clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+    clone.querySelectorAll('input[type="file"]').forEach(el=>el.remove());
+    clone.querySelectorAll('.link-badge').forEach(el=>el.remove());
+    const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([html], {type:'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = '日日敘-最新消息文章-已編輯.html';
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+  });
+  // ===== 手機版迷你選單 =====
+  (function(){
+    const toggle = document.getElementById('navToggle');
+    const list = document.querySelector('.topnav ul');
+    if(!toggle || !list) return;
+    toggle.addEventListener('click', ()=> list.classList.toggle('mobile-open'));
+    list.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=> list.classList.remove('mobile-open'));
+    });
+  })();
+
+</script>
+
+
+</body></html>
