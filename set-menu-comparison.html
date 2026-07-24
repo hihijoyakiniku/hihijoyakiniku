@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-Hant"><head>
 <!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ND40ZCGMP8"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5SJWQ25L2F"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-ND40ZCGMP8');
+  gtag('config', 'G-5SJWQ25L2F');
 </script>
 
 <meta charset="UTF-8">
@@ -575,9 +575,12 @@
   const exportBtnEl = document.getElementById('exportBtn');
   if(exportBtnEl) exportBtnEl.addEventListener('click', ()=>{
     const clone = document.documentElement.cloneNode(true);
-    const panel = clone.querySelector('#editorPanel');
-    if(panel) panel.remove();
+    // 保留 #editorPanel，讓匯出後的檔案上傳到 GitHub 後仍可用網址加 #edit 繼續編輯
     clone.classList.remove('editing');
+    const clonedSwitch = clone.querySelector('#editModeSwitch');
+    if(clonedSwitch) clonedSwitch.removeAttribute('checked');
+    const clonedControls = clone.querySelector('#editorControls');
+    if(clonedControls) clonedControls.classList.remove('open');
     clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
     clone.querySelectorAll('input[type="file"]').forEach(el=>el.remove());
     clone.querySelectorAll('.link-badge').forEach(el=>el.remove());
