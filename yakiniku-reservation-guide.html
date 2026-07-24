@@ -512,7 +512,7 @@
   document.querySelectorAll('.img-upload').forEach(zone=>{
     const input = document.createElement('input');
     input.type = 'file'; input.accept = 'image/*'; input.style.display = 'none';
-    zone.appendChild(input);
+    document.body.appendChild(input);
     zone.addEventListener('click', (e)=>{
       if(!document.body.classList.contains('editing')) return;
       if(e.target.closest('.link-badge')) return;
