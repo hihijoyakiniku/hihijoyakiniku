@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hihijoyakiniku.github.io/hihijoyakiniku/sitemap.xml
+Sitemap: https://hihijoyakiniku.com/sitemap.xml
