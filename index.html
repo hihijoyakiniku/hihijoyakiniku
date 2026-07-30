@@ -9,6 +9,8 @@
   gtag('config', 'G-5SJWQ25L2F');
 </script>
 
+  
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>日日敘 HIHIJO｜炭火燒肉</title>
@@ -203,18 +205,14 @@
   }
   .statement small{ display:block; margin-top:24px; font-size:13px; letter-spacing:3px; color:var(--ink-muted); }
 
-  /* ---------- signature dishes: carousel (3 slides) ---------- */
-  .dish-carousel{ position:relative; padding:0 8px; }
-  .dish-carousel-viewport{
-    display:flex; gap:24px; overflow-x:auto; scroll-snap-type:x mandatory;
-    scroll-behavior:smooth; -ms-overflow-style:none; scrollbar-width:none; padding:4px 0 8px;
-  }
-  .dish-carousel-viewport::-webkit-scrollbar{ display:none; }
-  .dish-carousel .dish-card{
-    flex:0 0 100%; max-width:560px; margin:0 auto; scroll-snap-align:center;
+  /* ---------- signature dishes ---------- */
+  .dish-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:24px; }
+  @media(max-width:760px){ .dish-grid{grid-template-columns:1fr;} }
+  .dish-card{
     position:relative; border-radius:2px; overflow:hidden; aspect-ratio:4/5;
     display:flex; align-items:flex-end; background:var(--bg-panel);
   }
+  .dish-card.feature{ grid-row:span 2; aspect-ratio:auto; }
   .dish-card .glaze{
     position:absolute; inset:0; background-size:cover; background-position:center;
     background-image:
@@ -238,6 +236,18 @@
     position:absolute; top:16px; right:16px; z-index:2;
     font-size:10px; letter-spacing:1px; color:rgba(243,236,221,0.35);
     border:1px solid rgba(243,236,221,0.2); padding:3px 8px; border-radius:20px;
+  }
+  .dish-grid-side{ display:grid; grid-template-rows:1fr 1fr; gap:24px; }
+
+  /* ---------- signature dishes: carousel (3 slides) ---------- */
+  .dish-carousel{ position:relative; padding:0 8px; }
+  .dish-carousel-viewport{
+    display:flex; gap:24px; overflow-x:auto; scroll-snap-type:x mandatory;
+    scroll-behavior:smooth; -ms-overflow-style:none; scrollbar-width:none; padding:4px 0 8px;
+  }
+  .dish-carousel-viewport::-webkit-scrollbar{ display:none; }
+  .dish-carousel .dish-card{
+    flex:0 0 100%; max-width:560px; margin:0 auto; scroll-snap-align:center;
   }
   .carousel-nav{
     position:absolute; top:50%; transform:translateY(-50%); z-index:5;
@@ -325,10 +335,12 @@
   .faq-item .q{
     font-family:var(--serif-cjk); font-weight:600; font-size:17px; color:var(--ink);
     margin-bottom:10px; line-height:1.7;
+  }
+  .faq-item .q::before{ content:'Q'; color:var(--gold-bright); margin-right:8px; font-family:var(--serif-en); font-style:italic; }
+  .faq-item .q{
     display:flex; align-items:center; justify-content:space-between; gap:16px;
     cursor:pointer; user-select:none;
   }
-  .faq-item .q::before{ content:'Q'; color:var(--gold-bright); margin-right:8px; font-family:var(--serif-en); font-style:italic; }
   .faq-item .q .toggle-icon{
     font-size:20px; color:var(--gold); line-height:1; flex-shrink:0;
     transition:transform .3s ease; font-family:var(--serif-en);
@@ -355,77 +367,137 @@
     font-size:11px; letter-spacing:2px; color:rgba(160,147,122,0.5);
   }
 
+  /* ================= EDITOR ================= */
+  .editor-panel{
+    position:fixed; bottom:28px; left:28px; z-index:80;
+    display:none; flex-direction:column; align-items:flex-start; gap:0;
+    font-family:var(--sans-cjk);
+  }
+  .editor-panel.show{ display:flex; }
+  .editor-toggle{
+    width:48px; height:48px; border-radius:50%; border:1px solid var(--gold);
+    background:#0F0D0A; color:var(--gold-bright); font-size:18px; cursor:pointer;
+  }
+  .editor-controls{
+    display:none; flex-direction:column; gap:14px; margin-bottom:12px;
+    background:#0F0D0A; border:1px solid var(--gold); border-radius:10px;
+    padding:18px; width:250px; order:-1;
+  }
+  .editor-controls.open{ display:flex; }
+  .editor-row{ display:flex; align-items:center; justify-content:space-between; font-size:13px; color:var(--ink); }
+  .editor-row input[type="checkbox"]{ width:36px; height:20px; accent-color:var(--gold); cursor:pointer; }
+  .editor-row input[type="color"]{
+    width:40px; height:26px; border:1px solid var(--line); border-radius:4px; background:none; cursor:pointer; padding:0;
+  }
+  .preset-colors{ display:flex; gap:8px; }
+  .preset-colors span{
+    width:20px; height:20px; border-radius:50%; cursor:pointer; border:1px solid rgba(255,255,255,0.2);
+  }
+  .editor-hint{ font-size:11px; color:var(--ink-muted); line-height:1.6; }
+  .editor-export{
+    padding:10px; border-radius:6px; border:1px solid var(--gold); background:transparent;
+    color:var(--gold-bright); font-size:12px; letter-spacing:1px; cursor:pointer;
+  }
+  .editor-export:hover{ background:rgba(201,162,75,0.12); }
+
+  body.editing [contenteditable="true"]{ outline:1px dashed rgba(201,162,75,0.5); outline-offset:4px; cursor:text; }
+  body.editing [contenteditable="true"]:focus{ outline:1px solid var(--gold-bright); background:rgba(201,162,75,0.06); }
+  body.editing .img-upload{ cursor:pointer; outline:1px dashed rgba(224,122,69,0.55); outline-offset:-1px; }
+  body.editing .img-upload::after{
+    content:attr(data-label);
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    background:rgba(15,13,10,0.5); color:var(--gold-bright); font-size:13px; letter-spacing:2px;
+    opacity:0; transition:opacity .25s ease; z-index:3; pointer-events:none;
+  }
+  body.editing .img-upload:hover::after{ opacity:1; }
   .logo-slot{ position:relative; display:inline-flex; align-items:center; }
   .logo-slot .logo-img{ display:none; max-height:1em; width:auto; }
   .logo-slot.has-logo .logo-text{ display:none; }
   .logo-slot.has-logo .logo-img{ display:block; }
+
+  /* ---------- linkable blocks (add / edit a URL) ---------- */
+  .linkable{ position:relative; }
+  .link-badge{
+    display:none; position:absolute; top:8px; left:8px; z-index:7;
+    width:26px; height:26px; border-radius:50%; border:1px solid var(--gold);
+    background:rgba(15,13,10,0.85); color:var(--gold-bright); font-size:12px;
+    align-items:center; justify-content:center; cursor:pointer; padding:0; line-height:1;
+  }
+  body.editing .linkable .link-badge{ display:flex; }
+  .link-badge:hover{ background:rgba(201,162,75,0.35); }
+  .link-badge.has-link{ border-color:var(--ember-bright); color:var(--ember-bright); }
+  /* nav/footer links are small, tuck the badge closer to the text */
+  .topnav .linkable .link-badge, .foot-grid .linkable .link-badge{
+    top:50%; left:auto; right:-32px; transform:translateY(-50%);
+  }
+  /* 浮動按鈕群組現在由 .float-cta-stack 統一控制固定定位 */
+  .float-cta-stack .link-badge{ top:-12px; left:-12px; }
 </style>
 </head>
 <body>
 
   <!-- ============ TOP NAV ============ -->
   <nav class="topnav">
-    <div class="mark logo-slot has-logo">
-      <span class="logo-text">日日敘</span>
+    <div class="mark logo-slot img-upload linkable has-logo" data-label="點擊上傳LOGO" data-href="index.html">
+      <span class="editable-text logo-text">日日敘</span>
       <img class="logo-img" alt="日日敘 Logo" src="images/logo-1-1b65f82d4d.png">
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="開啟選單">☰</button>
     <ul>
-      <li><a href="https://hihijoyakiniku.com/">首頁</a></li>
-      <li><a href="menu.html">菜單參考</a></li>
-      <li><a href="news.html">最新優惠</a></li>
-      <li><a href="contact.html">聯絡我們</a></li>
+      <li><a href="https://hihijoyakiniku.com/" class="editable-text linkable">首頁</a></li>
+      <li><a href="menu.html" class="editable-text linkable">菜單參考</a></li>      <li><a href="news.html" class="editable-text linkable">最新優惠</a></li>
+      <li><a href="contact.html" class="editable-text linkable">聯絡我們</a></li>
     </ul>
   </nav>
 
   <!-- ============ HERO ============ -->
   <header class="hero">
     <h1 class="sr-only">日日敘 HIHIJO 炭火燒肉｜台中南屯區日式炭火燒肉</h1>
-    <div class="hero-bg"></div>
+    <div class="hero-bg img-upload" data-label="點擊上傳品牌氛圍照片／影片截圖"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">HIHIJOYAKINIKU</div>
-      <div class="hero-mark logo-slot has-logo">
-        <span class="logo-text">日日敘</span>
+      <div class="hero-eyebrow editable-text">HIHIJOYAKINIKU</div>
+      <div class="hero-mark logo-slot img-upload has-logo" data-label="點擊上傳LOGO">
+        <span class="editable-text logo-text">日日敘</span>
         <img class="logo-img" alt="日日敘 Logo" src="images/logo-2-aa733b3305.png">
       </div>
-      <p class="hero-tagline">嚴選極上肉品|職人炭火精神</p>
-      <p class="hero-sub"><br></p>
+      <p class="hero-tagline editable-text">嚴選極上肉品|職人炭火精神</p>
+      <p class="hero-sub editable-text"><br></p>
     </div>
     <div class="scroll-cue"><span></span>SCROLL</div>
   </header>
 
   <!-- ============ POSITIONING STATEMENT ============ -->
   <section class="statement reveal in">
-    <div class="section-bg"></div>
-    <p>我們相信，一頓好的燒肉<br>重點從不在於火多大，<br>而是在於那股「剛剛好」的溫度。</p>
-    <small>HIHIJO · YAKINIKU · SLOW CONVERSATION</small>
+    <div class="section-bg img-upload" data-label="點擊上傳背景照片"></div>
+    <p class="editable-text">我們相信，一頓好的燒肉<br>重點從不在於火多大，<br>而是在於那股「剛剛好」的溫度。</p>
+    <small class="editable-text">HIHIJO · YAKINIKU · SLOW CONVERSATION</small>
   </section>
 
   <!-- ============ 招牌菜精選 ============ -->
   <section id="menu-preview">
-    <div class="section-bg"></div>
-    <div class="section-label reveal in"><span>招牌精選 · SIGNATURE</span></div>
+    <div class="section-bg img-upload" data-label="點擊上傳背景照片"></div>
+    <div class="section-label reveal in"><span class="editable-text">招牌精選 · SIGNATURE</span></div>
     <div class="dish-carousel reveal in">
       <button class="carousel-nav prev" type="button" aria-label="上一道菜">‹</button>
       <div class="dish-carousel-viewport" id="dishCarousel">
-        <div class="dish-card">
-          <div class="glaze" style="background-image: url('images/photo-1-cb08adc218.jpg');"></div><div class="grain"></div>
-          <span class="photo-note" style="display: none;">攝影待補</span>
-          <div class="info">
-            <span class="idx">Chef's Picks</span>
-            <h3>白巧克力熟成牛舌</h3>
-            <p>舌尖上的巧克力饗宴，濃郁綻放</p>
-          </div>
+      <div class="dish-card linkable">
+        <div class="glaze img-upload" data-label="點擊上傳照片" style="background-image: url(&quot;images/photo-1-cb08adc218.jpg&quot;);"></div><div class="grain"></div>
+        <span class="photo-note editable-text" style="display: none;">攝影待補</span>
+        <div class="info">
+          <span class="idx editable-text">Chef's Picks</span>
+          <h3 class="editable-text">白巧克力熟成牛舌</h3>
+          <p class="editable-text">舌尖上的巧克力饗宴，濃郁綻放</p>
         </div>
-        <div class="dish-card">
-          <div class="glaze" style="background-image: url('images/photo-2-2b14ae31e0.jpg');"></div><div class="grain"></div>
-          <span class="photo-note" style="display: none;">攝影待補</span>
-          <div class="info"><span class="idx">Curated Selection</span><h3>和牛拼盤</h3></div>
+      </div>
+        <div class="dish-card linkable">
+          <div class="glaze img-upload" data-label="點擊上傳照片" style="background-image: url(&quot;images/photo-2-2b14ae31e0.jpg&quot;);"></div><div class="grain"></div>
+          <span class="photo-note editable-text" style="display: none;">攝影待補</span>
+          <div class="info"><span class="idx editable-text">Curated Selection</span><h3 class="editable-text">和牛拼盤</h3></div>
         </div>
-        <div class="dish-card">
-          <div class="glaze" style="background-image: url('images/photo-3-9b0d74f811.jpg');"></div><div class="grain"></div>
-          <span class="photo-note" style="display: none;">攝影待補</span>
-          <div class="info"><span class="idx">Signature Dishes</span><h3>海膽比目魚丼飯</h3></div>
+        <div class="dish-card linkable">
+          <div class="glaze img-upload" data-label="點擊上傳照片" style="background-image: url(&quot;images/photo-3-9b0d74f811.jpg&quot;);"></div><div class="grain"></div>
+          <span class="photo-note editable-text" style="display: none;">攝影待補</span>
+          <div class="info"><span class="idx editable-text">Signature Dishes</span><h3 class="editable-text">海膽比目魚丼飯</h3></div>
         </div>
       </div>
       <button class="carousel-nav next" type="button" aria-label="下一道菜">›</button>
@@ -439,61 +511,61 @@
 
   <!-- ============ 店內氛圍 ============ -->
   <section id="ambience">
-    <div class="section-bg"></div>
-    <div class="section-label reveal in"><span>用餐環境 · Dining Environment</span></div>
+    <div class="section-bg img-upload" data-label="點擊上傳背景照片"></div>
+    <div class="section-label reveal in"><span class="editable-text">用餐環境 · Dining Environment</span></div>
     <div class="gallery reveal in">
-      <figure><div class="glaze" style="background-image: url('images/photo-4-d020f4264d.jpg');"></div><figcaption style="color: rgb(232, 199, 126);">包廂式 | 提前預訂<span style="color: rgb(243, 236, 221);">&nbsp;</span></figcaption></figure>
-      <figure><div class="glaze" style="background-image: url('images/photo-5-3e7e393bce.jpg');"></div><figcaption>開放式 | 限訂十桌</figcaption></figure>
-      <figure><div class="glaze" style="background-image: url('images/photo-6-123c5f8b85.jpg');"></div><figcaption style="color: rgb(224, 122, 69);">吸入式排風 | 減少異味</figcaption></figure>
-      <figure><div class="glaze" style="background-image: url('images/photo-7-648af48a17.jpg');"></div><figcaption style="color: rgb(232, 199, 126);">金星啤酒 | 燒肉好搭檔</figcaption></figure>
+      <figure class="linkable"><div class="glaze img-upload" data-label="點擊上傳照片" style="background-image: url(&quot;images/photo-4-d020f4264d.jpg&quot;);"></div><figcaption class="editable-text" style="color: rgb(232, 199, 126);">包廂式 | 提前預訂<span style="color: rgb(243, 236, 221);">&nbsp;</span></figcaption></figure>
+      <figure class="linkable"><div class="glaze img-upload" data-label="點擊上傳照片" style="background-image: url(&quot;images/photo-5-3e7e393bce.jpg&quot;);"></div><figcaption class="editable-text">開放式 | 限訂十桌</figcaption></figure>
+      <figure class="linkable"><div class="glaze img-upload" data-label="點擊上傳照片" style="background-image: url(&quot;images/photo-6-123c5f8b85.jpg&quot;);"></div><figcaption class="editable-text" style="color: rgb(224, 122, 69);">吸入式排風 | 減少異味</figcaption></figure>
+      <figure class="linkable"><div class="glaze img-upload" data-label="點擊上傳照片" style="background-image: url(&quot;images/photo-7-648af48a17.jpg&quot;);"></div><figcaption class="editable-text" style="color: rgb(232, 199, 126);">金星啤酒 | 燒肉好搭檔</figcaption></figure>
     </div>
   </section>
 
   <!-- ============ 常見問題 ============ -->
   <section id="faq">
-    <div class="section-bg"></div>
-    <div class="section-label reveal in"><span>常見問題 · FAQ</span></div>
+    <div class="section-bg img-upload" data-label="點擊上傳背景照片"></div>
+    <div class="section-label reveal in"><span class="editable-text">常見問題 · FAQ</span></div>
     <div class="faq reveal in">
       <div class="faq-item">
-        <p class="q" role="button" tabindex="0" aria-expanded="false">預約方式<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">預約方式<span class="toggle-icon" aria-hidden="true">+</span></p>
         <div class="a-wrap">
-          <p class="a">可透過inline、ontable進行預訂，線上可接受1-8位訂位，若人數8位以上，請於「營業時間」來電，由專人服務。</p>
+          <p class="a editable-text">可透過inline、ontable進行預訂，線上可接受1-8位訂位，若人數8位以上，請於「營業時間」來電，由專人服務。</p>
         </div>
       </div>
       <div class="faq-item">
-        <p class="q" role="button" tabindex="0" aria-expanded="false">用餐時間<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">用餐時間<span class="toggle-icon" aria-hidden="true">+</span></p>
         <div class="a-wrap">
-          <p class="a">預訂成功後，位置將保留10分鐘。用餐時間為2小時，從訂位時間開始計算，後續如無訂位客人可繼續用餐。</p>
+          <p class="a editable-text">預訂成功後，位置將保留10分鐘。用餐時間為2小時，從訂位時間開始計算，後續如無訂位客人可繼續用餐。</p>
         </div>
       </div>
       <div class="faq-item">
-        <p class="q" role="button" tabindex="0" aria-expanded="false">親子&amp;寵物友善嗎<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">親子&amp;寵物友善嗎<span class="toggle-icon" aria-hidden="true">+</span></p>
         <div class="a-wrap">
-          <p class="a">都相當歡迎，若有兒童椅需求，可在預約時備註。</p><div>寵物僅需有專屬的「推車或提籃」，並自備保潔墊就能與寶貝一起享用餐點。</div><p></p>
+          <p class="a editable-text">都相當歡迎，若有兒童椅需求，可在預約時備註。</p><div>寵物僅需有專屬的「推車或提籃」，並自備保潔墊就能與寶貝一起享用餐點。</div><p></p>
         </div>
       </div>
       <div class="faq-item">
-        <p class="q" role="button" tabindex="0" aria-expanded="false">有包廂可以聚餐或慶生嗎<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">有包廂可以聚餐或慶生嗎<span class="toggle-icon" aria-hidden="true">+</span></p>
         <div class="a-wrap">
-          <p class="a">備有私人用餐包廂，建議訂位時告知人數與需求，我們會為您安排合適的座位。</p>
+          <p class="a editable-text">備有私人用餐包廂，建議訂位時告知人數與需求，我們會為您安排合適的座位。</p>
         </div>
       </div>
       <div class="faq-item">
-        <p class="q" role="button" tabindex="0" aria-expanded="false">附近停車方便嗎<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">附近停車方便嗎<span class="toggle-icon" aria-hidden="true">+</span></p>
         <div class="a-wrap">
-          <p class="a">本店無特約停車場，可停放至 萬壽棒球場地下停車場(步行至店內約1-2分鐘)、鄰近停車格。</p>
+          <p class="a editable-text">本店無特約停車場，可停放至 萬壽棒球場地下停車場(步行至店內約1-2分鐘)、鄰近停車格。</p>
         </div>
       </div>
       <div class="faq-item">
-        <p class="q" role="button" tabindex="0" aria-expanded="false">菜單是套餐制還是可以單點<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">菜單是套餐制還是可以單點<span class="toggle-icon" aria-hidden="true">+</span></p>
         <div class="a-wrap">
-          <p class="a">提供雙人套餐，另外也提供單點服務。【白巧克力熟成牛舌】，為限量餐點，訂位時可事先備註。</p>
+          <p class="a editable-text">提供雙人套餐，另外也提供單點服務。【白巧克力熟成牛舌】，為限量餐點，訂位時可事先備註。</p>
         </div>
       </div>
       <div class="faq-item">
-        <p class="q" role="button" tabindex="0" aria-expanded="false">壽星有什麼優惠<span class="toggle-icon" aria-hidden="true">+</span></p>
+        <p class="q editable-text" role="button" tabindex="0" aria-expanded="false">壽星有什麼優惠<span class="toggle-icon" aria-hidden="true">+</span></p>
         <div class="a-wrap">
-          <p class="a">【當日壽星】：9折優惠並招待粉紅紫蘇梅酒一杯。【當月壽星】：精選肉品或特色料理乙份。</p><div><div>※壽星需攜帶本人實體證件，恕無法接受翻拍或影本，如有同時多位當日或當月壽星，僅能擇一優惠。</div></div><p></p>
+          <p class="a editable-text">【當日壽星】：9折優惠並招待粉紅紫蘇梅酒一杯。【當月壽星】：精選肉品或特色料理乙份。</p><div><div>※壽星需攜帶本人實體證件，恕無法接受翻拍或影本，如有同時多位當日或當月壽星，僅能擇一優惠。</div></div><p></p>
         </div>
       </div>
     </div>
@@ -501,80 +573,84 @@
 
   <!-- ============ 顧客評價 ============ -->
   <section id="reviews">
-    <div class="section-bg"></div>
-    <div class="section-label reveal in"><span>他們這樣說 · VOICES</span></div>
+    <div class="section-bg img-upload" data-label="點擊上傳背景照片"></div>
+    <div class="section-label reveal in"><span class="editable-text">他們這樣說 · VOICES</span></div>
     <div class="quotes reveal in">
       <div class="quote">
         <span class="mark">「</span>
-        <p></p><div>很湊巧找到一家寶藏店，店家肉質很好 ，ㄧ吃就知道。</div><div>其他職人料理也超好吃。</div><p></p>
-        <div class="who">— 顧客回饋</div>
+        <p class="editable-text"></p><div>很湊巧找到一家寶藏店，店家肉質很好 ，ㄧ吃就知道。</div><div>其他職人料理也超好吃。</div><p></p>
+        <div class="who editable-text">— 顧客回饋</div>
       </div>
       <div class="quote">
         <span class="mark">「</span>
-        <p>份量很多本來以為兩個女生會吃不完，但因為太好吃了，所以都吃完了。</p>
-        <div class="who">— 顧客回饋</div>
+        <p class="editable-text">份量很多本來以為兩個女生會吃不完，但因為太好吃了，所以都吃完了。</p>
+        <div class="who editable-text">— 顧客回饋</div>
       </div>
       <div class="quote">
         <span class="mark">「</span>
-        <p>海膽比目魚丼 超級好吃！非常推薦套餐加點！肉品品質真的很棒！牛肉關鍵就是不要太熟 烤生一點 會很嫩</p>
-        <div class="who">— 顧客回饋</div>
+        <p class="editable-text">海膽比目魚丼 超級好吃！非常推薦套餐加點！肉品品質真的很棒！牛肉關鍵就是不要太熟 烤生一點 會很嫩</p>
+        <div class="who editable-text">— 顧客回饋</div>
       </div>
     </div>
   </section>
 
   <!-- ============ FOOTER ============ -->
   <footer id="contact">
-    <div class="section-bg"></div>
+    <div class="section-bg img-upload" data-label="點擊上傳背景照片"></div>
     <div class="foot-grid">
       <div>
-        <div class="mark logo-slot has-logo">
-          <span class="logo-text">日日敘</span>
+        <div class="mark logo-slot img-upload has-logo" data-label="點擊上傳LOGO">
+          <span class="editable-text logo-text">日日敘</span>
           <img class="logo-img" alt="日日敘 Logo" src="images/logo-2-aa733b3305.png">
         </div>
-        <p>用炭火，把日常的滋味慢慢說給你聽。</p><div>歡迎與朋友、與自己，日日相敘。</div><p></p>
+        <p class="editable-text">用炭火，把日常的滋味慢慢說給你聽。</p><div>歡迎與朋友、與自己，日日相敘。</div><p></p>
       </div>
       <div id="about">
-        <h4>快速連結</h4>
+        <h4 class="editable-text">快速連結</h4>
         <ul>
-          <li><a href="menu.html">菜單參考</a></li>
-          <li><a href="news.html">最新優惠</a></li>
-          <li><a href="contact.html">聯絡我們</a></li>
-          <li><a href="#faq">常見問題</a></li>
+          <li><a href="menu.html" class="editable-text linkable">菜單參考</a></li>          <li><a href="news.html" class="editable-text linkable">最新優惠</a></li>
+          <li><a href="contact.html" class="editable-text linkable">聯絡我們</a></li>
+          <li><a href="#faq" class="editable-text linkable">常見問題</a></li>
         </ul>
       </div>
       <div>
-        <h4>營業資訊</h4>
+        <h4 class="editable-text">營業資訊</h4>
         <ul>
-          <li><a href="https://share.google/LnQQOMHaJSr4vc82J" target="_blank" rel="noopener">臺中市南屯區惠中里大墩路468號</a></li>
-          <li>週一至週日：17:00 – 23:30<div>週六/日：額外開放中午時段 12:00 – 15:00</div></li>
-          <li><a href="tel:0423204918">電話｜04-23204918</a></li>
-          <li><a href="https://www.instagram.com/hihijoyakiniku/" target="_blank" rel="noopener">Instagram ｜ @hihijoyakiniku</a></li>
-          <li><a href="https://www.facebook.com/profile.php?id=61586953097939" target="_blank" rel="noopener">Facebook ｜ 日日敘 炭火燒肉</a></li>
+          <li><a href="https://share.google/LnQQOMHaJSr4vc82J" class="editable-text linkable" target="_blank" rel="noopener">臺中市南屯區惠中里大墩路468號</a></li>
+          <li class="editable-text">週一至週日：17:00 – 23:30<div>週六/日：額外開放中午時段 12:00 – 15:00</div></li>
+          <li><a href="tel:0423204918" class="editable-text linkable">電話｜04-23204918</a></li>
+          <li><a href="https://www.instagram.com/hihijoyakiniku/" class="editable-text linkable" target="_blank" rel="noopener">Instagram ｜ @hihijoyakiniku</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61586953097939" class="editable-text linkable" target="_blank" rel="noopener">Facebook ｜ 日日敘 炭火燒肉</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 HIHIJO 日日敘</span>
-      <span>DESIGNED FOR EN</span>
-      <a href="articles.html">最新消息</a>
+      <span class="editable-text">© 2026 HIHIJO 日日敘</span>
+      <span class="editable-text">DESIGNED FOR EN</span>
+    <a href="articles.html" class="editable-text linkable">最新消息</a>
     </div>
   </footer>
 
   <!-- ============ RESERVATION CTA (follows scroll) ============ -->
   <div class="float-cta-stack">
-    <a class="float-cta line" id="floatLine" href="https://lin.ee/8g3Yqqx">
+    <div class="float-cta line linkable" id="floatLine" data-href="https://lin.ee/8g3Yqqx">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 3.54 2.9 6.54 6.94 7.56-.15.55-.6 2.15-.68 2.48-.1.42.15.41.32.3.13-.09 2.13-1.41 2.99-1.98.79.11 1.6.17 2.43.17 5.52 0 10-3.58 10-8s-4.48-8-10-8zm-4.5 9.5H6a.5.5 0 0 1-.5-.5V8a.5.5 0 0 1 1 0v3.5h1a.5.5 0 0 1 0 1zm2.5 0a.5.5 0 0 1-.5-.5V8a.5.5 0 0 1 1 0v4a.5.5 0 0 1-.5.5zm5-.05a.5.5 0 0 1-.4-.2L12.6 9.8v2.7a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .9-.3l2 2.45V8a.5.5 0 0 1 1 0v4a.5.5 0 0 1-.5.5zm4-3.45h-1.25v1h1.25a.5.5 0 0 1 0 1h-1.75a.5.5 0 0 1-.5-.5V8a.5.5 0 0 1 .5-.5H19a.5.5 0 0 1 0 1z"></path></svg>
-      <span class="tooltip">專屬優惠｜LINE</span>
-    </a>
-    <a class="float-cta primary-pulse" id="floatCta" href="https://inline.app/booking/-OjTQnAHCIUJU4sv2AMv:inline-live-4/-OjTQnFu_SWAl6bgrVYp">
+      <span class="tooltip editable-text">專屬優惠｜LINE</span>
+    </div>
+    <div class="float-cta primary-pulse linkable" id="floatCta" data-href="https://inline.app/booking/-OjTQnAHCIUJU4sv2AMv:inline-live-4/-OjTQnFu_SWAl6bgrVYp">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="M9 16l2 2 4-4"></path></svg>
-      <span class="tooltip">立即訂位</span>
-    </a>
-    <a class="float-cta phone" id="floatPhone" href="tel:0423204918">
+      <span class="tooltip editable-text">立即訂位</span>
+    </div>
+    <a class="float-cta phone linkable" id="floatPhone" href="tel:0423204918">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-      <span class="tooltip">電話訂位｜04-2320-4918</span>
+      <span class="tooltip editable-text">電話訂位｜04-2320-4918</span>
     </a>
   </div>
+
+  <!-- ============ EDITOR PANEL ============ -->
+  
+  
+  
 
 <script>
   // reveal on scroll
@@ -583,6 +659,204 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
   }, {threshold:0.15});
   revealEls.forEach(el=>io.observe(el));
+
+  // ===== editor panel open/close =====
+  // 網址加上 #edit 才會顯示編輯面板，一般訪客瀏覽不會看到
+  if(window.location.hash === '#edit'){
+    const ep = document.getElementById('editorPanel');
+    if(ep) ep.classList.add('show');
+  }
+  const editorToggleBtn = document.getElementById('editorToggleBtn');
+  const editorControls = document.getElementById('editorControls');
+  if(editorToggleBtn && editorControls){
+    editorToggleBtn.addEventListener('click', ()=> editorControls.classList.toggle('open'));
+  }
+
+  // ===== edit mode =====
+  const editModeSwitch = document.getElementById('editModeSwitch');
+  function setEditMode(on){
+    document.body.classList.toggle('editing', on);
+    document.querySelectorAll('.editable-text').forEach(el=>{
+      el.setAttribute('contenteditable', on ? 'true' : 'false');
+    });
+  }
+  if(editModeSwitch){
+    editModeSwitch.addEventListener('change', e=> setEditMode(e.target.checked));
+  }
+
+  // ===== text color =====
+  let currentEditable = null;
+  document.querySelectorAll('.editable-text').forEach(el=>{
+    el.addEventListener('focus', ()=> currentEditable = el);
+    el.addEventListener('click', ()=> currentEditable = el);
+  });
+  const colorPicker = document.getElementById('colorPicker');
+  function applyColor(hex){
+    if(!currentEditable) return;
+    // apply to selection if there is one inside the editable element, otherwise whole element
+    const sel = window.getSelection();
+    if(sel && sel.rangeCount && !sel.isCollapsed && currentEditable.contains(sel.anchorNode)){
+      const span = document.createElement('span');
+      span.style.color = hex;
+      try{ sel.getRangeAt(0).surroundContents(span); }catch(e){ currentEditable.style.color = hex; }
+    } else {
+      currentEditable.style.color = hex;
+    }
+  }
+  if(colorPicker){
+    colorPicker.addEventListener('input', (e)=> applyColor(e.target.value));
+  }
+  document.querySelectorAll('.preset-colors span').forEach(sw=>{
+    sw.addEventListener('click', ()=> applyColor(sw.dataset.color));
+  });
+
+  // ===== font family & font size =====
+  const fontPicker = document.getElementById('fontPicker');
+  if(fontPicker){
+    fontPicker.addEventListener('change', (e)=>{
+      if(!currentEditable) return;
+      if(e.target.value === ''){ currentEditable.style.fontFamily = ''; }
+      else { currentEditable.style.fontFamily = e.target.value; }
+    });
+  }
+  const fontSizePicker = document.getElementById('fontSizePicker');
+  if(fontSizePicker){
+    fontSizePicker.addEventListener('input', (e)=>{
+      if(!currentEditable) return;
+      const val = e.target.value;
+      if(val === ''){ currentEditable.style.fontSize = ''; }
+      else { currentEditable.style.fontSize = val + 'px'; }
+    });
+  }
+  // 點文字時，把目前的字型／字級顯示回選單，方便再次調整
+  document.querySelectorAll('.editable-text').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      if(fontSizePicker){
+        const size = window.getComputedStyle(el).fontSize;
+        fontSizePicker.value = parseInt(size, 10) || '';
+      }
+      if(fontPicker){ fontPicker.value = ''; }
+    });
+  });
+
+  // ===== image upload =====
+  document.querySelectorAll('.img-upload:not(.logo-slot)').forEach(zone=>{
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = 'image/*'; input.style.display = 'none';
+    zone.appendChild(input);
+    zone.addEventListener('click', (e)=>{
+      if(!document.body.classList.contains('editing')) return;
+      if(e.target.closest('.link-badge')) return;
+      e.preventDefault();
+      e.stopPropagation();
+      input.click();
+    });
+    input.addEventListener('change', ()=>{
+      const file = input.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev)=>{
+        zone.style.backgroundImage = `url(${ev.target.result})`;
+        const note = zone.parentElement.querySelector('.photo-note');
+        if(note) note.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+  // ===== logo upload (replaces the styled text with an image) =====
+  document.querySelectorAll('.logo-slot').forEach(zone=>{
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = 'image/*'; input.style.display = 'none';
+    zone.appendChild(input);
+    zone.addEventListener('click', (e)=>{
+      if(!document.body.classList.contains('editing')) return;
+      if(e.target.closest('.link-badge')) return;
+      e.preventDefault();
+      e.stopPropagation();
+      input.click();
+    });
+    input.addEventListener('change', ()=>{
+      const file = input.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev)=>{
+        zone.querySelector('.logo-img').src = ev.target.result;
+        zone.classList.add('has-logo');
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+  // ===== linkable blocks: add / edit a URL =====
+  document.querySelectorAll('.linkable').forEach(el=>{
+    if(el.querySelector(':scope > .link-badge')) return; // 避免重複插入徽章
+    const isAnchor = el.tagName === 'A';
+    const badge = document.createElement('span');
+    badge.className = 'link-badge';
+    badge.textContent = '🔗';
+    badge.setAttribute('role', 'button');
+    badge.setAttribute('tabindex', '0');
+    badge.setAttribute('aria-label', '設定連結網址');
+    el.appendChild(badge);
+
+    function currentUrl(){
+      const href = isAnchor ? (el.getAttribute('href') || '') : (el.dataset.href || '');
+      return (href === '#' || href === '') ? '' : href;
+    }
+    function refreshBadge(){
+      const url = currentUrl();
+      badge.classList.toggle('has-link', !!url);
+      badge.title = url ? ('目前連結：' + url + '（點擊修改）') : '點擊加入連結網址';
+    }
+    refreshBadge();
+
+    function openLinkPrompt(e){
+      e.preventDefault();
+      e.stopPropagation();
+      const input = prompt('請輸入連結網址\n（例如 https://... ／ tel:0423204918 ／ https://line.me/R/ti/p/...）\n留空可清除連結：', currentUrl());
+      if(input === null) return; // 使用者按取消
+      const url = input.trim();
+      if(isAnchor){
+        el.setAttribute('href', url === '' ? '#' : url);
+      } else {
+        if(url === ''){ delete el.dataset.href; }
+        else { el.dataset.href = url; }
+      }
+      refreshBadge();
+    }
+    badge.addEventListener('click', openLinkPrompt);
+    badge.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') openLinkPrompt(e); });
+
+    // 非 <a> 的可連結區塊：非編輯模式下點擊即可跳轉
+    if(!isAnchor){
+      el.addEventListener('click', (e)=>{
+        if(document.body.classList.contains('editing')) return;
+        if(e.target === badge) return;
+        const url = currentUrl();
+        if(url) window.location.href = url;
+      });
+    }
+  });
+
+  // ===== export edited version =====
+  const exportBtnEl = document.getElementById('exportBtn');
+  if(exportBtnEl) exportBtnEl.addEventListener('click', ()=>{
+    const clone = document.documentElement.cloneNode(true);
+    const panel = clone.querySelector('#editorPanel');
+    if(panel) panel.remove();
+    clone.classList.remove('editing');
+    clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+    clone.querySelectorAll('input[type="file"]').forEach(el=>el.remove());
+    clone.querySelectorAll('.link-badge').forEach(el=>el.remove()); // 重新載入時腳本會自動補回徽章，避免匯出檔重複產生
+    const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([html], {type:'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = '日日敘-首頁-已編輯.html';
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+  });
 
   // ===== signature dishes carousel =====
   (function(){
@@ -616,10 +890,10 @@
       }, 100);
     });
   })();
-
   // ===== FAQ 手風琴 =====
   document.querySelectorAll('.faq-item .q').forEach(q=>{
     function toggleFaq(){
+      if(document.body.classList.contains('editing')) return;
       const item = q.closest('.faq-item');
       const wasOpen = item.classList.contains('open');
       item.classList.toggle('open', !wasOpen);
@@ -641,6 +915,9 @@
       a.addEventListener('click', ()=> list.classList.remove('mobile-open'));
     });
   })();
+
 </script>
+
+
 
 </body></html>
