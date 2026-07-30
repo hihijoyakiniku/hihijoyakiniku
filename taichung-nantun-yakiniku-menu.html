@@ -146,7 +146,7 @@
   .article-meta .dot{ width:3px; height:3px; border-radius:50%; background:var(--ink-muted); }
 
   /* ---------- cover image ---------- */
-  .cover{ max-width:1040px; margin:0 auto; padding:0 6vw 60px; }
+  .cover{ margin:0 auto; padding:0 6vw 60px; }
   .cover-frame{
     aspect-ratio:16/9; border-radius:2px; position:relative; overflow:hidden;
     background-size:cover; background-position:center;
@@ -158,23 +158,21 @@
   }
   .cover-frame span{ font-size:12px; letter-spacing:2px; color:rgba(243,236,221,0.4); border:1px dashed rgba(243,236,221,0.25); padding:6px 14px; border-radius:20px; }
 
-  /* ---------- carousel（輪播封面） ---------- */
+  /* ---------- carousel（輪播封面，依原圖尺寸顯示、不裁切） ---------- */
   .carousel{
-    aspect-ratio:16/9; border-radius:2px; position:relative; overflow:hidden;
-    background:#17130E;
+    position:relative;
   }
-  .carousel-slide{
-    position:absolute; inset:0; background-size:cover; background-position:center;
-    opacity:0; transition:opacity 1s ease;
+  .carousel-img{
+    display:block; width:100%; height:auto;
   }
-  .carousel-slide.active{ opacity:1; }
   .carousel-dots{
     position:absolute; bottom:16px; left:50%; transform:translateX(-50%);
     display:flex; gap:10px; z-index:5;
   }
   .carousel-dots .dot{
-    width:8px; height:8px; border-radius:50%; background:rgba(243,236,221,0.4);
+    width:8px; height:8px; border-radius:50%; background:rgba(243,236,221,0.5);
     cursor:pointer; transition:background .25s ease, transform .25s ease;
+    box-shadow:0 0 3px rgba(0,0,0,0.6);
   }
   .carousel-dots .dot.active{ background:var(--gold-bright); transform:scale(1.2); }
 
@@ -333,13 +331,11 @@
   <!-- ============ COVER IMAGE ============ -->
   <div class="cover">
     <div class="carousel" id="coverCarousel">
-      <div class="carousel-slide active" style="background-image:url(&quot;images/taichung-menu-cover-1.jpg&quot;);"></div>
-      <div class="carousel-slide" style="background-image:url(&quot;images/taichung-menu-cover-2.jpg&quot;);"></div>
-      <div class="carousel-slide" style="background-image:url(&quot;images/taichung-menu-cover-3.jpg&quot;);"></div>
+      <img class="carousel-img" id="carouselImg" src="images/taichung-menu-cover-1.jpg" alt="日日敘炭火燒肉">
       <div class="carousel-dots">
-        <span class="dot active" data-index="0"></span>
-        <span class="dot" data-index="1"></span>
-        <span class="dot" data-index="2"></span>
+        <span class="dot active" data-src="images/taichung-menu-cover-1.jpg" data-index="0"></span>
+        <span class="dot" data-src="images/taichung-menu-cover-2.jpg" data-index="1"></span>
+        <span class="dot" data-src="images/taichung-menu-cover-3.jpg" data-index="2"></span>
       </div>
     </div>
   </div>
@@ -627,23 +623,22 @@
     document.body.appendChild(a); a.click(); a.remove();
     URL.revokeObjectURL(url);
   });
-  // ===== 輪播封面（自動輪播＋點擊小圓點切換） =====
+  // ===== 輪播封面（自動輪播＋點擊小圓點切換，依原圖尺寸顯示） =====
   (function(){
     const carousel = document.getElementById('coverCarousel');
-    if(!carousel) return;
-    const slides = carousel.querySelectorAll('.carousel-slide');
+    const img = document.getElementById('carouselImg');
+    if(!carousel || !img) return;
     const dots = carousel.querySelectorAll('.dot');
     let current = 0;
     let timer = null;
 
     function goTo(index){
-      slides[current].classList.remove('active');
       dots[current].classList.remove('active');
       current = index;
-      slides[current].classList.add('active');
       dots[current].classList.add('active');
+      img.src = dots[current].dataset.src;
     }
-    function next(){ goTo((current + 1) % slides.length); }
+    function next(){ goTo((current + 1) % dots.length); }
     function startAuto(){ timer = setInterval(next, 4000); }
     function stopAuto(){ if(timer) clearInterval(timer); }
 
