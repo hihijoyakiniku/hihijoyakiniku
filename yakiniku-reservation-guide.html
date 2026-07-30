@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-Hant"><head>
 <!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5SJWQ25L2F"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ND40ZCGMP8"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-5SJWQ25L2F');
+  gtag('config', 'G-ND40ZCGMP8');
 </script>
 
 <meta charset="UTF-8">
@@ -215,8 +215,6 @@
 
   .img-upload{ position:relative; cursor:default; }
   body.editing .img-upload{ cursor:pointer; outline:1px dashed rgba(224,122,69,0.55); outline-offset:-1px; }
-  /* 修正：避免點擊時被裡面的可編輯文字攔截，導致點擊變成「選取文字」而非「觸發上傳」 */
-  body.editing .img-upload .editable-text{ pointer-events:none; }
   body.editing .img-upload::after{
     content:attr(data-label);
     position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
@@ -512,7 +510,7 @@
   document.querySelectorAll('.img-upload').forEach(zone=>{
     const input = document.createElement('input');
     input.type = 'file'; input.accept = 'image/*'; input.style.display = 'none';
-    document.body.appendChild(input);
+    zone.appendChild(input);
     zone.addEventListener('click', (e)=>{
       if(!document.body.classList.contains('editing')) return;
       if(e.target.closest('.link-badge')) return;
@@ -587,12 +585,9 @@
   const exportBtnEl = document.getElementById('exportBtn');
   if(exportBtnEl) exportBtnEl.addEventListener('click', ()=>{
     const clone = document.documentElement.cloneNode(true);
-    // 保留 #editorPanel，讓匯出後的檔案上傳到 GitHub 後仍可用網址加 #edit 繼續編輯
+    const panel = clone.querySelector('#editorPanel');
+    if(panel) panel.remove();
     clone.classList.remove('editing');
-    const clonedSwitch = clone.querySelector('#editModeSwitch');
-    if(clonedSwitch) clonedSwitch.removeAttribute('checked');
-    const clonedControls = clone.querySelector('#editorControls');
-    if(clonedControls) clonedControls.classList.remove('open');
     clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
     clone.querySelectorAll('input[type="file"]').forEach(el=>el.remove());
     clone.querySelectorAll('.link-badge').forEach(el=>el.remove());
