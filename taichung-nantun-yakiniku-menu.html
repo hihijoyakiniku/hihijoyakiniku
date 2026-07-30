@@ -146,7 +146,7 @@
   .article-meta .dot{ width:3px; height:3px; border-radius:50%; background:var(--ink-muted); }
 
   /* ---------- cover image ---------- */
-  .cover{ margin:0 auto; padding:0 6vw 60px; }
+  .cover{ max-width:1040px; margin:0 auto; padding:0 6vw 60px; }
   .cover-frame{
     aspect-ratio:16/9; border-radius:2px; position:relative; overflow:hidden;
     background-size:cover; background-position:center;
@@ -193,6 +193,9 @@
     display:flex; align-items:center; justify-content:center;
   }
   .pull-figure span{ font-size:12px; letter-spacing:2px; color:rgba(243,236,221,0.35); }
+  .pull-figure-img{
+    display:block; width:100%; height:auto; border-radius:2px; margin:36px 0;
+  }
 
   /* ---------- cta block ---------- */
   .article-cta{ max-width:720px; margin:0 auto 100px; padding:0 6vw; }
@@ -355,7 +358,7 @@
 
     <h2 class="editable-text">招牌單點：白巧克力熟成牛舌 $1380</h2>
     <p class="editable-text">每日限量的白巧克力熟成牛舌，是我們最引以為傲的招牌——<div>敲開白巧克力，解鎖牛舌的全新風味，濃郁與鮮甜同時在口中綻放。數量有限，訂位時記得提前告知。</div></p>
-    <div class="pull-figure img-upload" data-label="點擊上傳白巧克力熟成牛舌照片（建議 1600×900）" style="background-image:url(&quot;images/taichung-menu-beef-tongue.jpg&quot;);"><span class="editable-text">白巧克力熟成牛舌照片待補（建議 1600×900，上傳同檔名圖片即可自動顯示）</span></div>
+    <img class="pull-figure-img" src="images/taichung-menu-beef-tongue.jpg" alt="白巧克力熟成牛舌">
 
     <h2 class="editable-text">熱門單點精選</h2>
     <ul>
@@ -364,7 +367,7 @@
       <li class="editable-text">波紋龍蝦（蒸）</li>
       <li class="editable-text">活龍蝦／帝王蟹（秤重計價）</li>
     </ul>
-    <div class="pull-figure img-upload" data-label="點擊上傳熱門單點精選照片（建議 1600×900）" style="background-image:url(&quot;images/taichung-menu-popular-items.jpg&quot;);"><span class="editable-text">熱門單點精選照片待補（建議 1600×900，上傳同檔名圖片即可自動顯示）</span></div>
+    <img class="pull-figure-img" src="images/taichung-menu-popular-items.jpg" alt="熱門單點精選">
 
     <h2 class="editable-text">立即訂位</h2>
     <p class="editable-text"><div>人數8位以上需致電</div>tel：04-2320-4918<div>限量品項可於訂位時預約備註。</div></p>
