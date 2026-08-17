@@ -18,18 +18,18 @@
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<meta name="description" content="日日敘炭火燒肉地址、電話、營業時間與訂位方式。台中市南屯區大墩路468號，營業時間 17:00–23:30，週六日加開中午 12:00–15:00，歡迎來電或線上訂位。">
+<meta name="description" content="日日敘炭火燒肉地址、電話、營業時間與訂位方式。台中市南屯區大墩路468號，營業時間 平日17:00–00:30，假日12:00–15:00、17:00–23:30，歡迎來電或線上訂位。">
 <link rel="canonical" href="https://hihijoyakiniku.com/contact.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="日日敘 HIHIJO 炭火燒肉">
 <meta property="og:title" content="聯絡我們｜日日敘 HIHIJO 炭火燒肉">
-<meta property="og:description" content="日日敘炭火燒肉地址、電話、營業時間與訂位方式。台中市南屯區大墩路468號，營業時間 17:00–23:30，週六日加開中午 12:00–15:00，歡迎來電或線上訂位。">
+<meta property="og:description" content="日日敘炭火燒肉地址、電話、營業時間與訂位方式。台中市南屯區大墩路468號，營業時間 平日17:00–00:30，假日12:00–15:00、17:00–23:30，歡迎來電或線上訂位。">
 <meta property="og:image" content="https://hihijoyakiniku.com/images/contact-storefront.jpg">
 <meta property="og:url" content="https://hihijoyakiniku.com/contact.html">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="聯絡我們｜日日敘 HIHIJO 炭火燒肉">
-<meta name="twitter:description" content="日日敘炭火燒肉地址、電話、營業時間與訂位方式。台中市南屯區大墩路468號，營業時間 17:00–23:30，週六日加開中午 12:00–15:00，歡迎來電或線上訂位。">
+<meta name="twitter:description" content="日日敘炭火燒肉地址、電話、營業時間與訂位方式。台中市南屯區大墩路468號，營業時間 平日17:00–00:30，假日12:00–15:00、17:00–23:30，歡迎來電或線上訂位。">
 <meta name="twitter:image" content="https://hihijoyakiniku.com/images/contact-storefront.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -283,7 +283,7 @@
 </style>
 </head>
 
-<body class="">
+<body>
 
   <!-- ============ TOP NAV ============ -->
   <nav class="topnav">
@@ -325,7 +325,7 @@
     <ul>
       <li class="linkable" data-href="https://share.google/LnQQOMHaJSr4vc82J"><span class="editable-text">地址｜台中市南屯區大墩路 468 號</span></li>
       <li class="linkable" data-href="tel:0423204918"><span class="editable-text">電話｜04-23204918</span></li>
-      <li class="linkable"><span class="editable-text">營業時間｜<br><div>週一到週五 17:00–00:30</div><div>週六到週日 12:00-15:00 / 17:00-23:30<br><br>最後收客、點餐時間｜<br>週一到週五：收客至 23:00 /&nbsp; 最後點餐23:30 (晚餐)<br>週六到週日：收客至13:00 / 最後點餐13:30 (中午)<br>週六到週日：收客至21:30 / 最後點餐22:00 (晚餐)</div></span></li>
+      <li class="linkable"><span class="editable-text">營業時間｜<br>平日｜週一至週五<br>17:00–00:30（最後收客 23:00，最後點餐 23:30）<br>假日午場｜週六至週日<br>12:00–15:00（最後收客 13:00，最後點餐 13:30）<br>假日晚場｜週六至週日<br>17:00–23:30（最後收客 21:30，最後點餐 22:00）</span></li>
       <li class="linkable" data-href="https://www.instagram.com/hihijoyakiniku/"><span class="editable-text">Instagram｜@hihijoyakiniku</span></li>
       <li class="linkable" data-href="https://www.facebook.com/profile.php?id=61586953097939"><span class="editable-text">Facebook｜日日敘 炭火燒肉</span></li>
     </ul>
@@ -363,7 +363,42 @@
   </div>
 
   <!-- ============ EDITOR PANEL ============ -->
-  
+  <div class="editor-panel" id="editorPanel">
+    <div class="editor-controls" id="editorControls">
+      <label class="editor-row">
+        <span>編輯模式</span>
+        <input type="checkbox" id="editModeSwitch">
+      </label>
+      <div class="editor-row">
+        <span>文字顏色</span>
+        <input type="color" id="colorPicker" value="#F3ECDD">
+      </div>
+      <div class="preset-colors">
+        <span style="background:#F3ECDD" data-color="#F3ECDD"></span>
+        <span style="background:#E8C77E" data-color="#E8C77E"></span>
+        <span style="background:#C9A24B" data-color="#C9A24B"></span>
+        <span style="background:#E07A45" data-color="#E07A45"></span>
+        <span style="background:#A0937A" data-color="#A0937A"></span>
+      </div>
+      <label class="editor-row">
+        <span>字型</span>
+        <select id="fontPicker" style="max-width:150px;">
+          <option value="">（沿用預設）</option>
+          <option value="'Noto Serif TC', serif">Noto Serif TC（標楷／標題感）</option>
+          <option value="'Noto Sans TC', sans-serif">Noto Sans TC（黑體／內文感）</option>
+          <option value="'Cormorant Garamond', serif">Cormorant Garamond（英文襯線）</option>
+          <option value="'Ma Shan Zheng', cursive">Ma Shan Zheng（毛筆字）</option>
+        </select>
+      </label>
+      <label class="editor-row">
+        <span>字級</span>
+        <input type="number" id="fontSizePicker" min="10" max="72" step="1" style="width:64px;" placeholder="px">
+      </label>
+      <div class="editor-hint">開啟編輯後：點文字可直接修改內容；點圖片區塊可上傳照片；選取文字後用顏色點修改顏色；點一下文字（不用選取）再調整「字型」「字級」，會套用到整段文字；點區塊上的 🔗 圖示可加入或修改連結網址。完成後按「匯出目前版本」下載你編輯好的檔案。</div>
+      <button class="editor-export" id="exportBtn">匯出目前版本</button>
+    </div>
+    <button class="editor-toggle" id="editorToggleBtn" title="編輯此頁">✎</button>
+  </div>
 
 <script>
   // ===== editor panel open/close =====
